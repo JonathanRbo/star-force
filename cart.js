@@ -351,27 +351,31 @@ class CartManager {
       return;
     }
 
-    // Fechar modal do carrinho
-    const cartModal = document.querySelector('[data-modal="modal-cart"]');
-    if (cartModal) {
-      cartModal.classList.remove('is-open');
-      document.body.style.overflow = '';
+    // Preencher resumo do pedido ANTES de abrir
+    this.updateCheckoutSummary();
+
+    // Fechar modal do carrinho manualmente
+    const cartModalBackdrop = document.querySelector('[data-modal="modal-cart"] .dialog-backdrop');
+    if (cartModalBackdrop) {
+      cartModalBackdrop.click();
     }
 
-    // Abrir modal de checkout
-    const checkoutModal = document.querySelector('[data-modal="modal-checkout"]');
-    if (checkoutModal) {
-      // Preencher resumo do pedido
-      this.updateCheckoutSummary();
-
-      // Abrir modal (usando sistema Squeleton)
-      if (typeof window.sqModalShow === 'function') {
-        window.sqModalShow('modal-checkout');
+    // Aguardar 300ms para animação de fechar
+    setTimeout(() => {
+      // Abrir modal de checkout usando trigger invisível
+      const checkoutTrigger = document.getElementById('hidden-checkout-trigger');
+      if (checkoutTrigger) {
+        checkoutTrigger.click();
       } else {
-        checkoutModal.classList.add('is-open');
-        document.body.style.overflow = 'hidden';
+        // Fallback manual
+        const checkoutModal = document.querySelector('[data-modal="modal-checkout"]');
+        if (checkoutModal) {
+          checkoutModal.setAttribute('aria-hidden', 'false');
+          checkoutModal.style.display = 'flex';
+          document.body.style.overflow = 'hidden';
+        }
       }
-    }
+    }, 300);
   }
 
   // ========================================
@@ -431,6 +435,10 @@ class CartManager {
     this.showToast('⏳ Processando pedido...', 'info');
 
     setTimeout(() => {
+      // Salvar dados antes de limpar
+      const customerName = formData.get('name') || 'Cliente';
+      const customerEmail = formData.get('email') || '';
+
       // Limpar carrinho
       this.cart = [];
       this.total = 0;
@@ -439,39 +447,46 @@ class CartManager {
       this.updateUI();
 
       // Fechar modal de checkout
-      const checkoutModal = document.querySelector('[data-modal="modal-checkout"]');
-      if (checkoutModal) {
-        checkoutModal.classList.remove('is-open');
-        document.body.style.overflow = '';
+      const checkoutBackdrop = document.querySelector('[data-modal="modal-checkout"] .dialog-backdrop');
+      if (checkoutBackdrop) {
+        checkoutBackdrop.click();
       }
 
-      // Mostrar modal de sucesso
-      this.showSuccessModal(formData);
+      // Aguardar fechar e mostrar sucesso
+      setTimeout(() => {
+        this.showSuccessModal(customerName, customerEmail);
+      }, 400);
     }, 1500);
   }
 
   // ========================================
   // Mostrar modal de sucesso
   // ========================================
-  showSuccessModal(formData) {
+  showSuccessModal(customerName, customerEmail) {
+    // Preencher dados do pedido
+    const orderNumber = Math.floor(100000 + Math.random() * 900000);
+    const orderNumberEl = document.getElementById('order-number');
+    const customerNameEl = document.getElementById('customer-name');
+    const customerEmailEl = document.getElementById('customer-email');
+
+    if (orderNumberEl) orderNumberEl.textContent = `#${orderNumber}`;
+    if (customerNameEl) customerNameEl.textContent = customerName;
+    if (customerEmailEl) customerEmailEl.textContent = customerEmail;
+
+    // Abrir modal de sucesso
     const successModal = document.querySelector('[data-modal="modal-success"]');
     if (successModal) {
-      // Preencher dados do pedido
-      const orderNumber = Math.floor(100000 + Math.random() * 900000);
-      document.getElementById('order-number').textContent = `#${orderNumber}`;
-      document.getElementById('customer-name').textContent = formData.get('name') || 'Cliente';
-      document.getElementById('customer-email').textContent = formData.get('email') || '';
-
-      // Abrir modal
-      if (typeof window.sqModalShow === 'function') {
-        window.sqModalShow('modal-success');
-      } else {
-        successModal.classList.add('is-open');
-        document.body.style.overflow = 'hidden';
-      }
+      // Forçar abertura do modal
+      successModal.setAttribute('aria-hidden', 'false');
+      successModal.style.display = 'flex';
+      document.body.style.overflow = 'hidden';
 
       // Confetes!
-      this.launchConfetti();
+      setTimeout(() => {
+        this.launchConfetti();
+      }, 300);
+
+      this.showToast('🎉 Pedido realizado com sucesso!', 'success');
     } else {
       this.showToast('🎉 Pedido realizado com sucesso! Obrigado pela compra!', 'success');
     }

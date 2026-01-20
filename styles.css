@@ -909,11 +909,20 @@ a:hover {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center;
   transition: transform 0.3s ease;
+  display: block;
 }
 
 .cart-item:hover .cart-item-image {
   transform: scale(1.1);
+}
+
+/* Garantir que a imagem carregue */
+.cart-item-image-wrapper img {
+  max-width: 100%;
+  height: auto;
+  min-height: 100px;
 }
 
 .cart-item-info {

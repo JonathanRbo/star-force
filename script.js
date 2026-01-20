@@ -12,6 +12,7 @@ document.addEventListener('DOMContentLoaded', function() {
   initHeaderScroll();
   initScrollToTop();
   initCartSystem();
+  initCheckoutForm();
   initEasterEgg();
 
   console.log('%c⚡ STAR FORCE ⚡', 'font-size: 24px; font-weight: bold; color: #FFD700; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);');
@@ -192,7 +193,7 @@ function initScrollToTop() {
 }
 
 // ========================================
-// Sistema de Carrinho com API
+// Sistema de Carrinho
 // ========================================
 function initCartSystem() {
   // Dados dos produtos
@@ -201,7 +202,7 @@ function initCartSystem() {
       id: 1,
       name: 'Whey Protein Morango',
       price: 299.99,
-      image: 'slide/vend1.jpg'
+      image: 'imagem/vend1.jpg'
     },
     {
       id: 2,
@@ -225,14 +226,14 @@ function initCartSystem() {
     const quantitySelect = modal.querySelector('.quantity-select');
 
     if (addToCartBtn && quantitySelect) {
-      addToCartBtn.addEventListener('click', async function(e) {
+      addToCartBtn.addEventListener('click', function(e) {
         e.preventDefault();
 
         const productData = productsData[index];
         const quantity = parseInt(quantitySelect.value) || 1;
 
         if (productData && window.cartManager) {
-          await window.cartManager.addProduct({
+          window.cartManager.addProduct({
             id: productData.id,
             name: productData.name,
             price: productData.price,
@@ -243,6 +244,94 @@ function initCartSystem() {
       });
     }
   });
+}
+
+// ========================================
+// Formulário de Checkout
+// ========================================
+function initCheckoutForm() {
+  const checkoutForm = document.getElementById('checkout-form');
+  if (!checkoutForm) return;
+
+  checkoutForm.addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    // Validar formulário
+    if (!checkoutForm.checkValidity()) {
+      checkoutForm.reportValidity();
+      return;
+    }
+
+    // Pegar dados do formulário
+    const formData = new FormData(checkoutForm);
+
+    // Processar checkout via CartManager
+    if (window.cartManager) {
+      window.cartManager.processCheckout(formData);
+    }
+  });
+
+  // Máscara de telefone
+  const phoneInput = checkoutForm.querySelector('input[name="phone"]');
+  if (phoneInput) {
+    phoneInput.addEventListener('input', function(e) {
+      let value = e.target.value.replace(/\D/g, '');
+      if (value.length > 11) value = value.slice(0, 11);
+
+      if (value.length > 10) {
+        e.target.value = `(${value.slice(0, 2)}) ${value.slice(2, 7)}-${value.slice(7)}`;
+      } else if (value.length > 6) {
+        e.target.value = `(${value.slice(0, 2)}) ${value.slice(2, 6)}-${value.slice(6)}`;
+      } else if (value.length > 2) {
+        e.target.value = `(${value.slice(0, 2)}) ${value.slice(2)}`;
+      } else {
+        e.target.value = value;
+      }
+    });
+  }
+
+  // Máscara de CEP
+  const zipcodeInput = checkoutForm.querySelector('input[name="zipcode"]');
+  if (zipcodeInput) {
+    zipcodeInput.addEventListener('input', function(e) {
+      let value = e.target.value.replace(/\D/g, '');
+      if (value.length > 8) value = value.slice(0, 8);
+
+      if (value.length > 5) {
+        e.target.value = `${value.slice(0, 5)}-${value.slice(5)}`;
+      } else {
+        e.target.value = value;
+      }
+    });
+
+    // Buscar CEP (ViaCEP API)
+    zipcodeInput.addEventListener('blur', async function() {
+      const cep = this.value.replace(/\D/g, '');
+      if (cep.length === 8) {
+        try {
+          const response = await fetch(`https://viacep.com.br/ws/${cep}/json/`);
+          const data = await response.json();
+
+          if (!data.erro) {
+            checkoutForm.querySelector('input[name="street"]').value = data.logradouro || '';
+            checkoutForm.querySelector('input[name="neighborhood"]').value = data.bairro || '';
+            checkoutForm.querySelector('input[name="city"]').value = data.localidade || '';
+            checkoutForm.querySelector('input[name="state"]').value = data.uf || '';
+          }
+        } catch (error) {
+          console.error('Erro ao buscar CEP:', error);
+        }
+      }
+    });
+  }
+
+  // Estado em maiúsculas
+  const stateInput = checkoutForm.querySelector('input[name="state"]');
+  if (stateInput) {
+    stateInput.addEventListener('input', function(e) {
+      e.target.value = e.target.value.toUpperCase();
+    });
+  }
 }
 
 // ========================================

@@ -854,22 +854,258 @@
               <button id="clear-cart-btn" class="btn-secondary f-1 fs-8 fw-700">
                 <span class="iccon-trash-1"></span> Limpar Carrinho
               </button>
-              <button class="btn-primary f-1 fs-8 fw-700" data-modal-hide>
+              <button id="checkout-btn" class="btn-primary f-1 fs-8 fw-700">
                 <span class="iccon-credit-card-1"></span> Finalizar Compra
               </button>
             </div>
 
             <div class="cart-footer-info text-center m-25-t p-20-t border-top-1 border-color-gold-subtle">
-              <p class="fs-7 opacity-7">
+              <p id="shipping-info" class="fs-7 opacity-7 m-10-b">
                 <span class="iccon-truck-1 text-gold"></span>
-                Frete grátis para compras acima de R$ 299
+                Frete grátis para compras acima de R$ 200
               </p>
-              <p class="fs-7 opacity-7 m-10-t">
+              <p class="fs-7 opacity-7">
                 <span class="iccon-shield-check-1 text-gold"></span>
                 Compra 100% segura e protegida
               </p>
             </div>
           </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal Checkout -->
+  <div data-modal="modal-checkout" class="modal-dialog" aria-hidden="true">
+    <div class="dialog-content">
+      <div class="dialog-backdrop" data-modal-hide></div>
+      <div class="dialog-inline w-max-1000px xs-w-95">
+        <button class="dialog-close" data-modal-hide></button>
+        <div class="modal-popup border-rd-10 p-40-all xs-p-20-all">
+          <div class="checkout-header m-30-b text-center">
+            <h2 class="fs-13 fw-800 m-15-b">
+              <span class="iccon-credit-card-1 text-gold"></span>
+              Finalizar Compra
+            </h2>
+            <p class="fs-8 opacity-7">Preencha seus dados para concluir o pedido</p>
+          </div>
+
+          <div class="row gap-30">
+            <!-- Formulário -->
+            <div class="c-xs-12 c-md-7">
+              <form id="checkout-form" class="checkout-form">
+                <!-- Dados Pessoais -->
+                <div class="form-section m-30-b">
+                  <h3 class="fs-10 fw-700 m-20-b d-flex f-items-center f-gap-10">
+                    <span class="iccon-user-1 text-gold"></span>
+                    Dados Pessoais
+                  </h3>
+
+                  <div class="form-group m-15-b">
+                    <label class="fs-8 fw-600 d-block m-8-b">Nome Completo *</label>
+                    <input type="text" name="name" required class="form-input w-100 p-12-all border-rd-8 fs-8" placeholder="Seu nome completo">
+                  </div>
+
+                  <div class="row gap-15">
+                    <div class="c-xs-12 c-sm-6">
+                      <div class="form-group m-15-b">
+                        <label class="fs-8 fw-600 d-block m-8-b">E-mail *</label>
+                        <input type="email" name="email" required class="form-input w-100 p-12-all border-rd-8 fs-8" placeholder="seu@email.com">
+                      </div>
+                    </div>
+                    <div class="c-xs-12 c-sm-6">
+                      <div class="form-group m-15-b">
+                        <label class="fs-8 fw-600 d-block m-8-b">Telefone *</label>
+                        <input type="tel" name="phone" required class="form-input w-100 p-12-all border-rd-8 fs-8" placeholder="(11) 99999-9999">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Endereço -->
+                <div class="form-section m-30-b">
+                  <h3 class="fs-10 fw-700 m-20-b d-flex f-items-center f-gap-10">
+                    <span class="iccon-map-pin-1 text-gold"></span>
+                    Endereço de Entrega
+                  </h3>
+
+                  <div class="form-group m-15-b">
+                    <label class="fs-8 fw-600 d-block m-8-b">CEP *</label>
+                    <input type="text" name="zipcode" required class="form-input w-100 p-12-all border-rd-8 fs-8" placeholder="00000-000" maxlength="9">
+                  </div>
+
+                  <div class="row gap-15">
+                    <div class="c-xs-12 c-sm-8">
+                      <div class="form-group m-15-b">
+                        <label class="fs-8 fw-600 d-block m-8-b">Rua *</label>
+                        <input type="text" name="street" required class="form-input w-100 p-12-all border-rd-8 fs-8" placeholder="Nome da rua">
+                      </div>
+                    </div>
+                    <div class="c-xs-12 c-sm-4">
+                      <div class="form-group m-15-b">
+                        <label class="fs-8 fw-600 d-block m-8-b">Número *</label>
+                        <input type="text" name="number" required class="form-input w-100 p-12-all border-rd-8 fs-8" placeholder="123">
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row gap-15">
+                    <div class="c-xs-12 c-sm-6">
+                      <div class="form-group m-15-b">
+                        <label class="fs-8 fw-600 d-block m-8-b">Bairro *</label>
+                        <input type="text" name="neighborhood" required class="form-input w-100 p-12-all border-rd-8 fs-8" placeholder="Bairro">
+                      </div>
+                    </div>
+                    <div class="c-xs-12 c-sm-6">
+                      <div class="form-group m-15-b">
+                        <label class="fs-8 fw-600 d-block m-8-b">Complemento</label>
+                        <input type="text" name="complement" class="form-input w-100 p-12-all border-rd-8 fs-8" placeholder="Apto, bloco, etc">
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row gap-15">
+                    <div class="c-xs-12 c-sm-8">
+                      <div class="form-group m-15-b">
+                        <label class="fs-8 fw-600 d-block m-8-b">Cidade *</label>
+                        <input type="text" name="city" required class="form-input w-100 p-12-all border-rd-8 fs-8" placeholder="Cidade">
+                      </div>
+                    </div>
+                    <div class="c-xs-12 c-sm-4">
+                      <div class="form-group m-15-b">
+                        <label class="fs-8 fw-600 d-block m-8-b">Estado *</label>
+                        <input type="text" name="state" required class="form-input w-100 p-12-all border-rd-8 fs-8" placeholder="SP" maxlength="2">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Pagamento -->
+                <div class="form-section m-30-b">
+                  <h3 class="fs-10 fw-700 m-20-b d-flex f-items-center f-gap-10">
+                    <span class="iccon-credit-card-1 text-gold"></span>
+                    Forma de Pagamento
+                  </h3>
+
+                  <div class="payment-methods">
+                    <label class="payment-option d-flex f-items-center f-gap-15 p-15-all border-rd-8 m-10-b cursor-pointer">
+                      <input type="radio" name="payment_method" value="pix" checked>
+                      <div class="f-1">
+                        <div class="fs-8 fw-700">PIX</div>
+                        <div class="fs-7 opacity-7">5% de desconto • Aprovação imediata</div>
+                      </div>
+                      <span class="iccon-qr-code-1 fs-11 text-gold"></span>
+                    </label>
+
+                    <label class="payment-option d-flex f-items-center f-gap-15 p-15-all border-rd-8 m-10-b cursor-pointer">
+                      <input type="radio" name="payment_method" value="credit_card">
+                      <div class="f-1">
+                        <div class="fs-8 fw-700">Cartão de Crédito</div>
+                        <div class="fs-7 opacity-7">Em até 12x sem juros</div>
+                      </div>
+                      <span class="iccon-credit-card-1 fs-11 text-gold"></span>
+                    </label>
+
+                    <label class="payment-option d-flex f-items-center f-gap-15 p-15-all border-rd-8 cursor-pointer">
+                      <input type="radio" name="payment_method" value="boleto">
+                      <div class="f-1">
+                        <div class="fs-8 fw-700">Boleto Bancário</div>
+                        <div class="fs-7 opacity-7">3% de desconto</div>
+                      </div>
+                      <span class="iccon-file-text-1 fs-11 text-gold"></span>
+                    </label>
+                  </div>
+                </div>
+
+                <button type="submit" class="btn-primary w-100 fs-9 fw-700">
+                  <span class="iccon-check-circle-1"></span> Confirmar Pedido
+                </button>
+              </form>
+            </div>
+
+            <!-- Resumo do Pedido -->
+            <div class="c-xs-12 c-md-5">
+              <div class="checkout-summary-box p-25-all border-rd-10">
+                <h3 class="fs-10 fw-700 m-20-b d-flex f-items-center f-gap-10">
+                  <span class="iccon-shopping-bag-1 text-gold"></span>
+                  Resumo do Pedido
+                </h3>
+
+                <div id="checkout-summary">
+                  <!-- Preenchido dinamicamente pelo JavaScript -->
+                </div>
+
+                <div class="checkout-guarantees m-25-t p-20-t border-top-1 border-color-gold-subtle">
+                  <div class="fs-7 opacity-8 m-10-b d-flex f-items-center f-gap-10">
+                    <span class="iccon-shield-check-1 text-gold"></span>
+                    <span>Compra 100% segura</span>
+                  </div>
+                  <div class="fs-7 opacity-8 m-10-b d-flex f-items-center f-gap-10">
+                    <span class="iccon-truck-1 text-gold"></span>
+                    <span>Entrega em todo Brasil</span>
+                  </div>
+                  <div class="fs-7 opacity-8 d-flex f-items-center f-gap-10">
+                    <span class="iccon-refresh-cw-1 text-gold"></span>
+                    <span>Devolução em 30 dias</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal Sucesso -->
+  <div data-modal="modal-success" class="modal-dialog" aria-hidden="true">
+    <div class="dialog-content">
+      <div class="dialog-backdrop" data-modal-hide></div>
+      <div class="dialog-inline w-max-600px xs-w-95">
+        <button class="dialog-close" data-modal-hide></button>
+        <div class="modal-popup border-rd-10 p-50-all xs-p-30-all text-center">
+          <div class="success-animation m-30-b">
+            <div class="success-checkmark">
+              <div class="check-icon">
+                <span class="icon-line line-tip"></span>
+                <span class="icon-line line-long"></span>
+                <div class="icon-circle"></div>
+                <div class="icon-fix"></div>
+              </div>
+            </div>
+          </div>
+
+          <h2 class="fs-14 fw-800 m-20-b text-gold">Pedido Confirmado!</h2>
+          <p class="fs-9 opacity-8 m-30-b">Obrigado pela sua compra, <strong id="customer-name">Cliente</strong>! 🎉</p>
+
+          <div class="order-details p-25-all border-rd-10 m-30-b">
+            <div class="fs-8 opacity-7 m-10-b">Número do Pedido:</div>
+            <div class="fs-12 fw-800 text-gold" id="order-number">#123456</div>
+
+            <div class="fs-7 opacity-7 m-25-t">
+              Enviamos um e-mail de confirmação para:<br>
+              <strong id="customer-email">email@exemplo.com</strong>
+            </div>
+          </div>
+
+          <div class="success-info p-20-all border-rd-8 m-30-b">
+            <div class="fs-8 m-15-b d-flex f-items-center f-justify-center f-gap-10">
+              <span class="iccon-truck-1 text-gold fs-10"></span>
+              <span>Seu pedido será enviado em até 2 dias úteis</span>
+            </div>
+            <div class="fs-8 d-flex f-items-center f-justify-center f-gap-10">
+              <span class="iccon-mail-1 text-gold fs-10"></span>
+              <span>Você receberá o código de rastreamento por e-mail</span>
+            </div>
+          </div>
+
+          <button class="btn-primary fs-9 fw-700 m-10-b" data-modal-hide>
+            <span class="iccon-home-1"></span> Voltar para Início
+          </button>
+          <br>
+          <a href="#produtos" class="btn-secondary fs-8 fw-700" data-modal-hide>
+            Continuar Comprando
+          </a>
         </div>
       </div>
     </div>

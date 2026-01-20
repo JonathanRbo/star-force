@@ -1,0 +1,886 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Star Force - Suplementos de Alta Performance</title>
+  <link rel="shortcut icon" href="imagem/Stars.jpg" type="image/png">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+
+  <!-- Squeleton CSS -->
+  <link rel="stylesheet" href="https://cdn.squeleton.dev/squeleton.v4.min.css">
+
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="styles.css">
+
+  <!-- Squeleton JS Main (Head) -->
+  <script src="https://cdn.squeleton.dev/squeleton-main.v4.min.js"></script>
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="header p-20-tb ps-fixed top-0 w-100 z-index-1111" role="banner">
+    <div class="container">
+      <div class="d-flex f-items-center f-justify-between">
+        <div class="logo">
+          <a href="#" aria-label="Star Force - Página inicial">
+            <img src="imagem/logo-starforce.svg" alt="Star Force Logo" class="logo-img">
+          </a>
+        </div>
+        <nav class="d-flex f-gap-30 f-items-center md-d-none" role="navigation" aria-label="Menu principal">
+          <a href="#produtos" class="nav-link fs-8 fw-600">Produtos</a>
+          <a href="#beneficios" class="nav-link fs-8 fw-600">Benefícios</a>
+          <a href="#diferenciais" class="nav-link fs-8 fw-600">Diferenciais</a>
+          <a href="#certificacoes" class="nav-link fs-8 fw-600">Certificações</a>
+          <a href="#equipe" class="nav-link fs-8 fw-600">Equipe</a>
+          <button class="btn-primary fs-7 fw-700" data-modal-show="modal-cart" aria-label="Ver carrinho de compras">
+            <span class="iccon-shopping-bag-1"></span> Carrinho <span class="cart-badge">0</span>
+          </button>
+        </nav>
+        <button class="btn-mobile d-none md-d-flex" id="mobile-menu-btn" aria-label="Abrir menu" aria-expanded="false">
+          <span class="iccon-menu-1" id="menu-icon"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-nav d-none md-d-block" id="mobile-menu" aria-hidden="true">
+    <nav class="mobile-nav-content p-30-all" role="navigation" aria-label="Menu mobile">
+      <a href="#produtos" class="mobile-nav-link d-block p-15-tb fs-9 fw-600">Produtos</a>
+      <a href="#beneficios" class="mobile-nav-link d-block p-15-tb fs-9 fw-600">Benefícios</a>
+      <a href="#diferenciais" class="mobile-nav-link d-block p-15-tb fs-9 fw-600">Diferenciais</a>
+      <a href="#certificacoes" class="mobile-nav-link d-block p-15-tb fs-9 fw-600">Certificações</a>
+      <a href="#equipe" class="mobile-nav-link d-block p-15-tb fs-9 fw-600">Equipe</a>
+      <button class="btn-primary w-100 fs-8 fw-700 m-20-t" data-modal-show="modal-cart">
+        <span class="iccon-shopping-bag-1"></span> Carrinho <span class="cart-badge">0</span>
+      </button>
+    </nav>
+  </div>
+
+  <!-- Hero Section -->
+  <section id="hero" class="hero h-100vh d-flex f-justify-center f-items-center text-center p-30-all ps-relative overflow-hidden">
+    <div class="hero-content w-max-800px ps-relative z-index-10">
+      <div class="wow fadeIn" data-wow-delay="0.2s">
+        <span class="badge-hero d-inline-block p-10-lr p-5-tb border-rd-20 fs-6 fw-700 m-20-b">
+          <span class="iccon-award-1"></span> #1 EM QUALIDADE NO BRASIL
+        </span>
+      </div>
+      <h1 class="fs-18 fw-900 m-30-b xs-fs-14 md-fs-16 wow fadeInUp" data-wow-delay="0.3s">
+        Libere Sua <span class="text-gold">Força Interior</span> com Suplementos de Elite
+      </h1>
+      <p class="fs-10 m-40-b opacity-9 xs-fs-8 md-fs-9 lh-15 wow fadeInUp" data-wow-delay="0.4s">
+        Whey Protein premium certificado internacionalmente. Mais de 50.000 atletas confiam na Star Force para alcançar resultados extraordinários. Qualidade comprovada em laboratório, sabor incomparável.
+      </p>
+      <div class="d-flex f-gap-20 f-justify-center f-wrap m-40-b wow fadeInUp" data-wow-delay="0.5s">
+        <a href="#produtos" class="btn-primary fs-9 fw-700">
+          <span class="iccon-zap-1"></span> Ver Produtos
+        </a>
+        <button class="btn-secondary fs-9 fw-700" data-modal-show="modal-video">
+          <span class="iccon-play-circle-1"></span> Assista ao Vídeo
+        </button>
+      </div>
+      <div class="hero-stats d-flex f-gap-40 f-justify-center f-wrap wow fadeInUp" data-wow-delay="0.6s">
+        <div class="stat-item">
+          <div class="fs-13 fw-800 text-gold">25g</div>
+          <div class="fs-7 opacity-7">Proteína/Dose</div>
+        </div>
+        <div class="stat-item">
+          <div class="fs-13 fw-800 text-gold">50k+</div>
+          <div class="fs-7 opacity-7">Clientes</div>
+        </div>
+        <div class="stat-item">
+          <div class="fs-13 fw-800 text-gold">4.9★</div>
+          <div class="fs-7 opacity-7">Avaliação</div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-scroll ps-absolute bottom-0 m-40-b animated pulse infinite">
+      <span class="iccon-chevron-down-1 fs-12 opacity-7"></span>
+    </div>
+  </section>
+
+  <!-- Certificações e Selos -->
+  <section id="certificacoes" class="certificacoes p-80-tb xs-p-40-tb bg-dark-alt">
+    <div class="container">
+      <div class="text-center m-60-b xs-m-40-b wow fadeInUp">
+        <h2 class="fs-14 fw-800 m-20-b xs-fs-11">Certificações e Conformidades</h2>
+        <p class="fs-9 opacity-8 xs-fs-7">Validações internacionais que garantem a excelência dos nossos produtos</p>
+      </div>
+      <div class="row gap-30">
+        <!-- ISO 9001 -->
+        <div class="c-xs-12 c-sm-6 c-lg-3 wow fadeInUp" data-wow-delay="0.1s">
+          <div class="cert-card p-30-all border-rd-12 h-100">
+            <div class="cert-header m-20-b">
+              <div class="cert-badge d-inline-block p-8-all border-rd-8 m-15-b">
+                <span class="fs-6 fw-700 opacity-7">CERTIFICADO POR</span>
+              </div>
+              <div class="cert-icon-wrapper m-20-b">
+                <span class="iccon-shield-check-1 fs-18 text-gold"></span>
+              </div>
+            </div>
+            <div class="cert-body">
+              <h3 class="fs-10 fw-800 m-15-b text-gold">ISO 9001:2015</h3>
+              <p class="fs-7 opacity-9 lh-14">Certifica nosso Sistema de Gestão da Qualidade, garantindo processos padronizados e melhoria contínua em toda cadeia produtiva.</p>
+              <div class="cert-meta m-20-t p-15-t border-top-1 border-color-gold-subtle">
+                <span class="fs-6 opacity-7"><span class="iccon-calendar-1"></span> Válido até 2027</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- FDA -->
+        <div class="c-xs-12 c-sm-6 c-lg-3 wow fadeInUp" data-wow-delay="0.2s">
+          <div class="cert-card p-30-all border-rd-12 h-100">
+            <div class="cert-header m-20-b">
+              <div class="cert-badge d-inline-block p-8-all border-rd-8 m-15-b">
+                <span class="fs-6 fw-700 opacity-7">APROVADO PELA</span>
+              </div>
+              <div class="cert-icon-wrapper m-20-b">
+                <span class="iccon-award-1 fs-18 text-gold"></span>
+              </div>
+            </div>
+            <div class="cert-body">
+              <h3 class="fs-10 fw-800 m-15-b text-gold">FDA</h3>
+              <p class="fs-7 opacity-9 lh-14">Aprovação do Food and Drug Administration dos EUA, confirmando segurança alimentar e conformidade com rigorosos padrões internacionais.</p>
+              <div class="cert-meta m-20-t p-15-t border-top-1 border-color-gold-subtle">
+                <span class="fs-6 opacity-7"><span class="iccon-globe-1"></span> Padrão Internacional</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ANVISA -->
+        <div class="c-xs-12 c-sm-6 c-lg-3 wow fadeInUp" data-wow-delay="0.3s">
+          <div class="cert-card p-30-all border-rd-12 h-100">
+            <div class="cert-header m-20-b">
+              <div class="cert-badge d-inline-block p-8-all border-rd-8 m-15-b">
+                <span class="fs-6 fw-700 opacity-7">REGISTRADO NA</span>
+              </div>
+              <div class="cert-icon-wrapper m-20-b">
+                <span class="iccon-check-circle-1 fs-18 text-gold"></span>
+              </div>
+            </div>
+            <div class="cert-body">
+              <h3 class="fs-10 fw-800 m-15-b text-gold">ANVISA</h3>
+              <p class="fs-7 opacity-9 lh-14">Registro na Agência Nacional de Vigilância Sanitária, atestando qualidade, segurança e eficácia para o mercado brasileiro.</p>
+              <div class="cert-meta m-20-t p-15-t border-top-1 border-color-gold-subtle">
+                <span class="fs-6 opacity-7"><span class="iccon-flag-1"></span> Certificado Nacional</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- GMP -->
+        <div class="c-xs-12 c-sm-6 c-lg-3 wow fadeInUp" data-wow-delay="0.4s">
+          <div class="cert-card p-30-all border-rd-12 h-100">
+            <div class="cert-header m-20-b">
+              <div class="cert-badge d-inline-block p-8-all border-rd-8 m-15-b">
+                <span class="fs-6 fw-700 opacity-7">SEGUE NORMAS</span>
+              </div>
+              <div class="cert-icon-wrapper m-20-b">
+                <span class="iccon-star-1 fs-18 text-gold"></span>
+              </div>
+            </div>
+            <div class="cert-body">
+              <h3 class="fs-10 fw-800 m-15-b text-gold">GMP Certificado</h3>
+              <p class="fs-7 opacity-9 lh-14">Boas Práticas de Fabricação que asseguram controle rigoroso em todas as etapas, da matéria-prima ao produto final.</p>
+              <div class="cert-meta m-20-t p-15-t border-top-1 border-color-gold-subtle">
+                <span class="fs-6 opacity-7"><span class="iccon-check-square-1"></span> Auditado Trimestralmente</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Diferenciais -->
+  <section id="diferenciais" class="diferenciais p-80-tb xs-p-40-tb">
+    <div class="container">
+      <div class="text-center m-60-b xs-m-40-b wow fadeInUp">
+        <h2 class="fs-14 fw-800 m-20-b xs-fs-11">Por Que a Star Force é Diferente?</h2>
+        <p class="fs-9 opacity-8 xs-fs-7">Tecnologia de ponta e compromisso com a excelência</p>
+      </div>
+
+      <div class="row gap-30">
+        <div class="c-xs-12 c-md-6 wow fadeInLeft">
+          <div class="diferencial-card p-40-all border-rd-12 h-100">
+            <div class="d-flex f-gap-20 m-20-b">
+              <span class="iccon-flask-1 fs-15 text-gold"></span>
+              <div>
+                <h3 class="fs-11 fw-800 m-15-b">Microfiltração a Frio</h3>
+                <p class="fs-8 opacity-9 lh-15">Processo exclusivo que preserva 100% dos aminoácidos essenciais e BCAAs. Sem uso de calor, mantendo a integridade das proteínas e garantindo máxima biodisponibilidade.</p>
+                <ul class="m-20-t">
+                  <li class="fs-7 opacity-8 m-10-b d-flex f-gap-10"><span class="iccon-check-1 text-gold"></span> Zero desnaturação proteica</li>
+                  <li class="fs-7 opacity-8 m-10-b d-flex f-gap-10"><span class="iccon-check-1 text-gold"></span> Absorção em até 30 minutos</li>
+                  <li class="fs-7 opacity-8 d-flex f-gap-10"><span class="iccon-check-1 text-gold"></span> 98% de pureza garantida</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="c-xs-12 c-md-6 wow fadeInRight">
+          <div class="diferencial-card p-40-all border-rd-12 h-100">
+            <div class="d-flex f-gap-20 m-20-b">
+              <span class="iccon-droplet-1 fs-15 text-gold"></span>
+              <div>
+                <h3 class="fs-11 fw-800 m-15-b">Sabor Premium Incomparável</h3>
+                <p class="fs-8 opacity-9 lh-15">Desenvolvido por especialistas em gastronomia fitness. Sabores naturais e dissolução instantânea sem grumos. Experiência gourmet em cada dose.</p>
+                <ul class="m-20-t">
+                  <li class="fs-7 opacity-8 m-10-b d-flex f-gap-10"><span class="iccon-check-1 text-gold"></span> Aromas naturais importados</li>
+                  <li class="fs-7 opacity-8 m-10-b d-flex f-gap-10"><span class="iccon-check-1 text-gold"></span> Textura cremosa perfeita</li>
+                  <li class="fs-7 opacity-8 d-flex f-gap-10"><span class="iccon-check-1 text-gold"></span> Sem sabor residual artificial</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="c-xs-12 c-md-6 wow fadeInLeft" data-wow-delay="0.2s">
+          <div class="diferencial-card p-40-all border-rd-12 h-100">
+            <div class="d-flex f-gap-20 m-20-b">
+              <span class="iccon-activity-1 fs-15 text-gold"></span>
+              <div>
+                <h3 class="fs-11 fw-800 m-15-b">Testado em Atletas de Elite</h3>
+                <p class="fs-8 opacity-9 lh-15">Desenvolvido em parceria com nutricionistas esportivos e testado por atletas profissionais. Resultados comprovados em ganho de massa e recuperação muscular.</p>
+                <ul class="m-20-t">
+                  <li class="fs-7 opacity-8 m-10-b d-flex f-gap-10"><span class="iccon-check-1 text-gold"></span> Usado por fisiculturistas pro</li>
+                  <li class="fs-7 opacity-8 m-10-b d-flex f-gap-10"><span class="iccon-check-1 text-gold"></span> Aprovado por nutricionistas</li>
+                  <li class="fs-7 opacity-8 d-flex f-gap-10"><span class="iccon-check-1 text-gold"></span> Resultados em 30 dias</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="c-xs-12 c-md-6 wow fadeInRight" data-wow-delay="0.2s">
+          <div class="diferencial-card p-40-all border-rd-12 h-100">
+            <div class="d-flex f-gap-20 m-20-b">
+              <span class="iccon-leaf-1 fs-15 text-gold"></span>
+              <div>
+                <h3 class="fs-11 fw-800 m-15-b">Sustentabilidade e Rastreabilidade</h3>
+                <p class="fs-8 opacity-9 lh-15">Matéria-prima rastreável de fazendas certificadas. QR Code em cada lote para verificação da origem e laudos laboratoriais. Compromisso com o meio ambiente.</p>
+                <ul class="m-20-t">
+                  <li class="fs-7 opacity-8 m-10-b d-flex f-gap-10"><span class="iccon-check-1 text-gold"></span> Produção carbono neutro</li>
+                  <li class="fs-7 opacity-8 m-10-b d-flex f-gap-10"><span class="iccon-check-1 text-gold"></span> Embalagem 100% reciclável</li>
+                  <li class="fs-7 opacity-8 d-flex f-gap-10"><span class="iccon-check-1 text-gold"></span> Rastreamento blockchain</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Benefícios -->
+  <section id="beneficios" class="beneficios p-80-tb xs-p-40-tb bg-dark-alt">
+    <div class="container">
+      <div class="text-center m-60-b xs-m-40-b wow fadeInUp">
+        <h2 class="fs-14 fw-800 m-20-b xs-fs-11">Vantagens Exclusivas Star Force</h2>
+        <p class="fs-9 opacity-8 xs-fs-7">Comprometimento total com sua evolução física</p>
+      </div>
+
+      <div class="row gap-20">
+        <div class="c-xs-12 c-sm-6 c-lg-3 wow fadeInUp" data-wow-delay="0.1s">
+          <div class="benefit-card p-30-all text-center border-rd-10 h-100">
+            <div class="benefit-icon m-20-b">
+              <span class="iccon-qr-code-1 fs-16"></span>
+            </div>
+            <h3 class="fs-10 fw-700 m-15-b">PIX com 5% OFF</h3>
+            <p class="fs-7 opacity-8">Desconto imediato pagando com PIX</p>
+          </div>
+        </div>
+
+        <div class="c-xs-12 c-sm-6 c-lg-3 wow fadeInUp" data-wow-delay="0.2s">
+          <div class="benefit-card p-30-all text-center border-rd-10 h-100">
+            <div class="benefit-icon m-20-b">
+              <span class="iccon-credit-card-1 fs-16"></span>
+            </div>
+            <h3 class="fs-10 fw-700 m-15-b">Parcele em 12x</h3>
+            <p class="fs-7 opacity-8">Sem juros no cartão de crédito</p>
+          </div>
+        </div>
+
+        <div class="c-xs-12 c-sm-6 c-lg-3 wow fadeInUp" data-wow-delay="0.3s">
+          <div class="benefit-card p-30-all text-center border-rd-10 h-100">
+            <div class="benefit-icon m-20-b">
+              <span class="iccon-truck-1 fs-16"></span>
+            </div>
+            <h3 class="fs-10 fw-700 m-15-b">Frete Grátis</h3>
+            <p class="fs-7 opacity-8">Para todo o Brasil em compras acima de R$ 200</p>
+          </div>
+        </div>
+
+        <div class="c-xs-12 c-sm-6 c-lg-3 wow fadeInUp" data-wow-delay="0.4s">
+          <div class="benefit-card p-30-all text-center border-rd-10 h-100">
+            <div class="benefit-icon m-20-b">
+              <span class="iccon-shield-check-1 fs-16"></span>
+            </div>
+            <h3 class="fs-10 fw-700 m-15-b">Qualidade Garantida</h3>
+            <p class="fs-7 opacity-8">Produtos certificados e testados</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Produtos em Destaque -->
+  <section id="produtos" class="produtos p-80-tb xs-p-40-tb">
+    <div class="container">
+      <div class="text-center m-60-b xs-m-40-b wow fadeInUp">
+        <h2 class="fs-14 fw-800 m-20-b xs-fs-11">Nossos Produtos em Destaque</h2>
+        <p class="fs-9 opacity-8 xs-fs-7">Whey Protein premium com os melhores sabores</p>
+      </div>
+
+      <div class="row gap-30">
+        <!-- Produto 1 - Morango -->
+        <div class="c-xs-12 c-sm-6 c-lg-4 wow fadeInUp" data-wow-delay="0.1s">
+          <div class="product-card border-rd-10">
+            <div class="product-image ps-relative">
+              <img src="imagem/vend1.jpg" alt="Whey Protein Morango" class="w-100 border-rd-10-t obj-cover">
+              <div class="product-badge ps-absolute top-0 right-0 m-15-all">
+                <span class="badge-destaque fs-6 fw-700 p-10-all border-rd-5">MAIS VENDIDO</span>
+              </div>
+            </div>
+            <div class="product-info p-25-all">
+              <div class="product-rating m-10-b">
+                <span class="fs-7">⭐⭐⭐⭐⭐</span>
+                <span class="fs-6 opacity-7 m-5-l">(4.822 avaliações)</span>
+              </div>
+              <h3 class="fs-10 fw-700 m-15-b">Whey Protein Morango</h3>
+              <p class="fs-7 opacity-8 m-20-b">Sabor intenso e cremoso, perfeito para o pós-treino</p>
+              <div class="product-price m-20-b">
+                <span class="price-current fs-12 fw-800 text-gold">R$ 299,99</span>
+                <p class="fs-6 opacity-7 m-5-t">10x de R$ 29,99 sem juros</p>
+              </div>
+              <button class="btn-primary w-100 fs-8 fw-700" data-modal-show="modal-produto-1">
+                <span class="iccon-shopping-cart-1"></span> Ver Detalhes
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Produto 2 - Chocolate -->
+        <div class="c-xs-12 c-sm-6 c-lg-4 wow fadeInUp" data-wow-delay="0.2s">
+          <div class="product-card border-rd-10">
+            <div class="product-image ps-relative">
+              <img src="slide/vend2.jpg" alt="Whey Protein Chocolate" class="w-100 border-rd-10-t obj-cover">
+            </div>
+            <div class="product-info p-25-all">
+              <div class="product-rating m-10-b">
+                <span class="fs-7">⭐⭐⭐⭐⭐</span>
+                <span class="fs-6 opacity-7 m-5-l">(3.868 avaliações)</span>
+              </div>
+              <h3 class="fs-10 fw-700 m-15-b">Whey Protein Chocolate</h3>
+              <p class="fs-7 opacity-8 m-20-b">Sabor clássico irresistível, dissolução perfeita</p>
+              <div class="product-price m-20-b">
+                <span class="price-current fs-12 fw-800 text-gold">R$ 299,99</span>
+                <p class="fs-6 opacity-7 m-5-t">10x de R$ 29,99 sem juros</p>
+              </div>
+              <button class="btn-primary w-100 fs-8 fw-700" data-modal-show="modal-produto-2">
+                <span class="iccon-shopping-cart-1"></span> Ver Detalhes
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Produto 3 - Natural -->
+        <div class="c-xs-12 c-sm-6 c-lg-4 wow fadeInUp" data-wow-delay="0.3s">
+          <div class="product-card border-rd-10">
+            <div class="product-image ps-relative">
+              <img src="slide/vend3.jpg" alt="Whey Protein Natural" class="w-100 border-rd-10-t obj-cover">
+            </div>
+            <div class="product-info p-25-all">
+              <div class="product-rating m-10-b">
+                <span class="fs-7">⭐⭐⭐⭐⭐</span>
+                <span class="fs-6 opacity-7 m-5-l">(6.038 avaliações)</span>
+              </div>
+              <h3 class="fs-10 fw-700 m-15-b">Whey Protein Natural</h3>
+              <p class="fs-7 opacity-8 m-20-b">Versátil para receitas, sem adição de sabor</p>
+              <div class="product-price m-20-b">
+                <span class="price-current fs-12 fw-800 text-gold">R$ 299,99</span>
+                <p class="fs-6 opacity-7 m-5-t">10x de R$ 29,99 sem juros</p>
+              </div>
+              <button class="btn-primary w-100 fs-8 fw-700" data-modal-show="modal-produto-3">
+                <span class="iccon-shopping-cart-1"></span> Ver Detalhes
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Depoimentos Carousel -->
+  <section id="depoimentos" class="depoimentos p-80-tb xs-p-40-tb">
+    <div class="container">
+      <div class="text-center m-60-b xs-m-40-b wow fadeInUp">
+        <h2 class="fs-14 fw-800 m-20-b xs-fs-11">O Que Nossos Clientes Dizem</h2>
+        <p class="fs-9 opacity-8 xs-fs-7">Resultados reais de quem confia na Stars</p>
+      </div>
+
+      <div class="slide__viewport">
+        <div class="slide__row gap-20">
+          <div class="slide__item c-xs-12 c-md-6 c-lg-4">
+            <div class="testimonial-card p-30-all border-rd-10 h-100">
+              <div class="stars m-15-b">⭐⭐⭐⭐⭐</div>
+              <p class="fs-8 m-25-b opacity-9">"Entrega super rápida e atendimento excelente. O whey de morango é viciante, parece milk shake!"</p>
+              <div class="d-flex f-items-center f-gap-15">
+                <img src="imagem/homem.png" alt="Cliente" class="w-50px h-50px border-rd-50 obj-cover">
+                <div>
+                  <h4 class="fs-8 fw-700">Rafael Santos</h4>
+                  <p class="fs-6 opacity-7">Cliente desde 2024</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="slide__item c-xs-12 c-md-6 c-lg-4">
+            <div class="testimonial-card p-30-all border-rd-10 h-100">
+              <div class="stars m-15-b">⭐⭐⭐⭐⭐</div>
+              <p class="fs-8 m-25-b opacity-9">"Qualidade benefício imbatível! Comprei 3 unidades no PIX e economizei muito. Produto de qualidade superior."</p>
+              <div class="d-flex f-items-center f-gap-15">
+                <img src="imagem/homem.png" alt="Cliente" class="w-50px h-50px border-rd-50 obj-cover">
+                <div>
+                  <h4 class="fs-8 fw-700">Carlos Oliveira</h4>
+                  <p class="fs-6 opacity-7">Cliente desde 2024</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="slide__item c-xs-12 c-md-6 c-lg-4">
+            <div class="testimonial-card p-30-all border-rd-10 h-100">
+              <div class="stars m-15-b">⭐⭐⭐⭐⭐</div>
+              <p class="fs-8 m-25-b opacity-9">"Atendimento nota 10! Tiraram todas minhas dúvidas antes da compra. O whey natural é perfeito para minhas receitas fit."</p>
+              <div class="d-flex f-items-center f-gap-15">
+                <img src="imagem/homem.png" alt="Cliente" class="w-50px h-50px border-rd-50 obj-cover">
+                <div>
+                  <h4 class="fs-8 fw-700">Marcelo Alves</h4>
+                  <p class="fs-6 opacity-7">Cliente desde 2023</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="slide__item c-xs-12 c-md-6 c-lg-4">
+            <div class="testimonial-card p-30-all border-rd-10 h-100">
+              <div class="stars m-15-b">⭐⭐⭐⭐⭐</div>
+              <p class="fs-8 m-25-b opacity-9">"Melhor whey que já experimentei! Sabor incrível e dissolução perfeita. Já indiquei para todos da academia."</p>
+              <div class="d-flex f-items-center f-gap-15">
+                <img src="imagem/homem.png" alt="Cliente" class="w-50px h-50px border-rd-50 obj-cover">
+                <div>
+                  <h4 class="fs-8 fw-700">Bruno Mendes</h4>
+                  <p class="fs-6 opacity-7">Cliente desde 2025</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="slide__dots m-40-t"></div>
+        <button class="slide__prev"><span class="iccon-chevron-left-1"></span></button>
+        <button class="slide__next"><span class="iccon-chevron-right-1"></span></button>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Final -->
+  <section id="cta" class="cta p-80-tb xs-p-40-tb text-center">
+    <div class="container">
+      <div class="cta-content w-max-700px m-auto-lr wow zoomIn">
+        <h2 class="fs-15 fw-800 m-30-b xs-fs-12">Pronto Para Transformar Seus Resultados?</h2>
+        <p class="fs-10 m-40-b opacity-9 xs-fs-8">Aproveite 5% de desconto no PIX + frete grátis acima de R$ 200</p>
+        <a href="#produtos" class="btn-cta fs-10 fw-700">
+          Comprar Agora <span class="iccon-arrow-right-1"></span>
+        </a>
+        <p class="fs-7 m-20-t opacity-7">
+          <span class="iccon-shield-check-1"></span> Compra 100% segura
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Equipe -->
+  <section id="equipe" class="equipe p-80-tb xs-p-40-tb">
+    <div class="container">
+      <div class="text-center m-60-b xs-m-40-b wow fadeInUp">
+        <h2 class="fs-14 fw-800 m-20-b xs-fs-11">Nossa Equipe</h2>
+        <p class="fs-9 opacity-8 xs-fs-7">Time dedicado para oferecer a melhor experiência</p>
+      </div>
+
+      <div class="row gap-25">
+        <div class="c-xs-12 c-sm-6 c-lg-3 wow fadeInUp" data-wow-delay="0.1s">
+          <div class="team-card text-center p-30-all border-rd-10">
+            <img src="imagem/jonathan.jpeg" alt="Jonathan" class="w-120px h-120px border-rd-50 obj-cover m-20-b">
+            <h3 class="fs-10 fw-700 m-10-b">Jonathan Ribeiro</h3>
+            <p class="fs-7 opacity-7 m-15-b">Designer & Tech Lead</p>
+            <p class="fs-6 opacity-8">jribeirojonathan@gmail.com</p>
+          </div>
+        </div>
+
+        <div class="c-xs-12 c-sm-6 c-lg-3 wow fadeInUp" data-wow-delay="0.2s">
+          <div class="team-card text-center p-30-all border-rd-10">
+            <img src="imagem/Luan.jpg" alt="Luan" class="w-120px h-120px border-rd-50 obj-cover m-20-b">
+            <h3 class="fs-10 fw-700 m-10-b">Luan Silva</h3>
+            <p class="fs-7 opacity-7 m-15-b">Pesquisador de Produtos</p>
+            <p class="fs-6 opacity-8">Especialista em suplementação</p>
+          </div>
+        </div>
+
+        <div class="c-xs-12 c-sm-6 c-lg-3 wow fadeInUp" data-wow-delay="0.3s">
+          <div class="team-card text-center p-30-all border-rd-10">
+            <img src="imagem/nicolas.jpg" alt="Nicolas" class="w-120px h-120px border-rd-50 obj-cover m-20-b">
+            <h3 class="fs-10 fw-700 m-10-b">Nicolas Costa</h3>
+            <p class="fs-7 opacity-7 m-15-b">Desenvolvedor Full Stack</p>
+            <p class="fs-6 opacity-8">Sistemas e automação</p>
+          </div>
+        </div>
+
+        <div class="c-xs-12 c-sm-6 c-lg-3 wow fadeInUp" data-wow-delay="0.4s">
+          <div class="team-card text-center p-30-all border-rd-10">
+            <img src="imagem/luis.jpg" alt="Luis" class="w-120px h-120px border-rd-50 obj-cover m-20-b">
+            <h3 class="fs-10 fw-700 m-10-b">Luis Fernandes</h3>
+            <p class="fs-7 opacity-7 m-15-b">Front-end Developer</p>
+            <p class="fs-6 opacity-8">UI/UX e performance</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer p-60-tb xs-p-40-tb">
+    <div class="container">
+      <div class="row gap-40">
+        <div class="c-xs-12 c-md-4">
+          <img src="imagem/logo-starforce.svg" alt="Star Force Logo" class="logo-footer m-20-b">
+          <p class="fs-7 opacity-8 lh-15 m-20-b">A Star Force é líder em suplementação esportiva premium, oferecendo produtos de qualidade internacional para atletas e entusiastas do fitness.</p>
+          <div class="d-flex f-gap-15">
+            <a href="#" class="social-link" aria-label="Facebook"><span class="iccon-facebook-1 fs-9"></span></a>
+            <a href="#" class="social-link" aria-label="Instagram"><span class="iccon-instagram-1 fs-9"></span></a>
+            <a href="#" class="social-link" aria-label="YouTube"><span class="iccon-youtube-1 fs-9"></span></a>
+            <a href="#" class="social-link" aria-label="Twitter"><span class="iccon-twitter-1 fs-9"></span></a>
+          </div>
+        </div>
+
+        <div class="c-xs-12 c-sm-6 c-md-2">
+          <h4 class="fs-9 fw-700 m-20-b">Produtos</h4>
+          <ul class="footer-links">
+            <li><a href="#produtos" class="fs-7 opacity-7 d-block m-10-b">Whey Protein</a></li>
+            <li><a href="#produtos" class="fs-7 opacity-7 d-block m-10-b">Creatina</a></li>
+            <li><a href="#produtos" class="fs-7 opacity-7 d-block m-10-b">Pre-Treino</a></li>
+            <li><a href="#produtos" class="fs-7 opacity-7 d-block m-10-b">Combos</a></li>
+            <li><a href="#produtos" class="fs-7 opacity-7 d-block">Lançamentos</a></li>
+          </ul>
+        </div>
+
+        <div class="c-xs-12 c-sm-6 c-md-3">
+          <h4 class="fs-9 fw-700 m-20-b">Institucional</h4>
+          <ul class="footer-links">
+            <li><a href="#equipe" class="fs-7 opacity-7 d-block m-10-b">Sobre Nós</a></li>
+            <li><a href="#certificacoes" class="fs-7 opacity-7 d-block m-10-b">Certificações</a></li>
+            <li><a href="#" class="fs-7 opacity-7 d-block m-10-b">Blog</a></li>
+            <li><a href="#" class="fs-7 opacity-7 d-block m-10-b">Trabalhe Conosco</a></li>
+            <li><a href="#" class="fs-7 opacity-7 d-block">Seja um Revendedor</a></li>
+          </ul>
+        </div>
+
+        <div class="c-xs-12 c-md-3">
+          <h4 class="fs-9 fw-700 m-20-b">Atendimento</h4>
+          <ul class="footer-links">
+            <li class="fs-7 opacity-7 m-15-b d-flex f-gap-10">
+              <span class="iccon-phone-1 text-gold"></span>
+              <span>(11) 9999-9999</span>
+            </li>
+            <li class="fs-7 opacity-7 m-15-b d-flex f-gap-10">
+              <span class="iccon-mail-1 text-gold"></span>
+              <span>contato@starforce.com</span>
+            </li>
+            <li class="fs-7 opacity-7 m-15-b d-flex f-gap-10">
+              <span class="iccon-clock-1 text-gold"></span>
+              <span>Seg-Sex: 8h às 18h</span>
+            </li>
+          </ul>
+          <h4 class="fs-8 fw-700 m-15-t m-10-b">Formas de Pagamento</h4>
+          <div class="d-flex f-gap-10 f-wrap">
+            <span class="payment-icon"><span class="iccon-credit-card-1 fs-10"></span></span>
+            <span class="payment-icon"><span class="iccon-qr-code-1 fs-10"></span></span>
+            <span class="payment-icon"><span class="iccon-dollar-sign-1 fs-10"></span></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="border-top-1 border-color-dark-alt m-40-t p-30-t text-center xs-text-left">
+        <div class="d-flex f-justify-between f-items-center f-wrap xs-f-direction-column xs-f-gap-20">
+          <p class="fs-7 opacity-7">© 2026 Star Force Suplementos - Todos os direitos reservados | CNPJ: 00.000.000/0001-00</p>
+          <div class="d-flex f-gap-20 f-wrap">
+            <a href="#" class="fs-6 opacity-7">Política de Privacidade</a>
+            <a href="#" class="fs-6 opacity-7">Termos de Uso</a>
+            <a href="#" class="fs-6 opacity-7">Trocas e Devoluções</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Modal Produto 1 - Morango -->
+  <div data-modal="modal-produto-1" class="modal-dialog" aria-hidden="true">
+    <div class="dialog-content">
+      <div class="dialog-backdrop" data-modal-hide></div>
+      <div class="dialog-inline w-max-800px xs-w-95">
+        <button class="dialog-close" data-modal-hide></button>
+        <div class="modal-popup border-rd-10 p-40-all xs-p-20-all">
+          <div class="row gap-30">
+            <div class="c-xs-12 c-md-6">
+              <img src="imagem/vend1.jpg" alt="Whey Protein Morango" class="w-100 border-rd-8">
+            </div>
+            <div class="c-xs-12 c-md-6">
+              <div class="product-rating m-10-b">
+                <span class="fs-7">⭐⭐⭐⭐⭐</span>
+                <span class="fs-6 opacity-7 m-5-l">(4.822)</span>
+              </div>
+              <h2 class="fs-12 fw-800 m-20-b">Whey Protein Morango</h2>
+              <p class="fs-8 opacity-8 m-25-b">Whey protein concentrado premium com sabor morango intenso. Dissolução perfeita, rico em aminoácidos essenciais e BCAAs. Ideal para ganho de massa muscular e recuperação pós-treino.</p>
+
+              <div class="product-specs m-25-b p-20-all border-rd-5">
+                <h3 class="fs-9 fw-700 m-15-b">Especificações:</h3>
+                <ul class="fs-7 opacity-8">
+                  <li class="m-10-b"><span class="iccon-check-1 text-gold"></span> 25g de proteína por dose</li>
+                  <li class="m-10-b"><span class="iccon-check-1 text-gold"></span> 900g (30 doses)</li>
+                  <li class="m-10-b"><span class="iccon-check-1 text-gold"></span> Baixo teor de gordura</li>
+                  <li class="m-10-b"><span class="iccon-check-1 text-gold"></span> Certificado internacional</li>
+                </ul>
+              </div>
+
+              <div class="product-price m-25-b">
+                <span class="price-current fs-13 fw-800 text-gold">R$ 299,99</span>
+                <p class="fs-7 opacity-7 m-5-t">10x de R$ 29,99 sem juros</p>
+                <p class="fs-7 text-gold m-10-t">
+                  <span class="iccon-qr-code-1"></span> R$ 284,99 no PIX (5% OFF)
+                </p>
+              </div>
+
+              <div class="m-25-b">
+                <label class="fs-8 fw-700 m-10-b d-block">Quantidade:</label>
+                <select class="quantity-select fs-8 p-10-all border-rd-5 w-100">
+                  <option value="1">1 Unidade</option>
+                  <option value="2">2 Unidades</option>
+                  <option value="3">3 Unidades</option>
+                  <option value="4">4 Unidades</option>
+                  <option value="5">5 Unidades</option>
+                </select>
+              </div>
+
+              <button class="btn-primary w-100 fs-9 fw-700 m-10-b">
+                <span class="iccon-shopping-cart-1"></span> Adicionar ao Carrinho
+              </button>
+              <button class="btn-secondary w-100 fs-9 fw-700">
+                Comprar Agora
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal Produto 2 - Chocolate -->
+  <div data-modal="modal-produto-2" class="modal-dialog" aria-hidden="true">
+    <div class="dialog-content">
+      <div class="dialog-backdrop" data-modal-hide></div>
+      <div class="dialog-inline w-max-800px xs-w-95">
+        <button class="dialog-close" data-modal-hide></button>
+        <div class="modal-popup border-rd-10 p-40-all xs-p-20-all">
+          <div class="row gap-30">
+            <div class="c-xs-12 c-md-6">
+              <img src="slide/vend2.jpg" alt="Whey Protein Chocolate" class="w-100 border-rd-8">
+            </div>
+            <div class="c-xs-12 c-md-6">
+              <div class="product-rating m-10-b">
+                <span class="fs-7">⭐⭐⭐⭐⭐</span>
+                <span class="fs-6 opacity-7 m-5-l">(3.868)</span>
+              </div>
+              <h2 class="fs-12 fw-800 m-20-b">Whey Protein Chocolate</h2>
+              <p class="fs-8 opacity-8 m-25-b">Sabor chocolate clássico e irresistível. Formulação premium com alta concentração proteica. Perfeito para quem busca sabor e resultados.</p>
+
+              <div class="product-specs m-25-b p-20-all border-rd-5">
+                <h3 class="fs-9 fw-700 m-15-b">Especificações:</h3>
+                <ul class="fs-7 opacity-8">
+                  <li class="m-10-b"><span class="iccon-check-1 text-gold"></span> 25g de proteína por dose</li>
+                  <li class="m-10-b"><span class="iccon-check-1 text-gold"></span> 900g (30 doses)</li>
+                  <li class="m-10-b"><span class="iccon-check-1 text-gold"></span> Baixo teor de gordura</li>
+                  <li class="m-10-b"><span class="iccon-check-1 text-gold"></span> Certificado internacional</li>
+                </ul>
+              </div>
+
+              <div class="product-price m-25-b">
+                <span class="price-current fs-13 fw-800 text-gold">R$ 299,99</span>
+                <p class="fs-7 opacity-7 m-5-t">10x de R$ 29,99 sem juros</p>
+                <p class="fs-7 text-gold m-10-t">
+                  <span class="iccon-qr-code-1"></span> R$ 284,99 no PIX (5% OFF)
+                </p>
+              </div>
+
+              <div class="m-25-b">
+                <label class="fs-8 fw-700 m-10-b d-block">Quantidade:</label>
+                <select class="quantity-select fs-8 p-10-all border-rd-5 w-100">
+                  <option value="1">1 Unidade</option>
+                  <option value="2">2 Unidades</option>
+                  <option value="3">3 Unidades</option>
+                  <option value="4">4 Unidades</option>
+                  <option value="5">5 Unidades</option>
+                </select>
+              </div>
+
+              <button class="btn-primary w-100 fs-9 fw-700 m-10-b">
+                <span class="iccon-shopping-cart-1"></span> Adicionar ao Carrinho
+              </button>
+              <button class="btn-secondary w-100 fs-9 fw-700">
+                Comprar Agora
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal Produto 3 - Natural -->
+  <div data-modal="modal-produto-3" class="modal-dialog" aria-hidden="true">
+    <div class="dialog-content">
+      <div class="dialog-backdrop" data-modal-hide></div>
+      <div class="dialog-inline w-max-800px xs-w-95">
+        <button class="dialog-close" data-modal-hide></button>
+        <div class="modal-popup border-rd-10 p-40-all xs-p-20-all">
+          <div class="row gap-30">
+            <div class="c-xs-12 c-md-6">
+              <img src="slide/vend3.jpg" alt="Whey Protein Natural" class="w-100 border-rd-8">
+            </div>
+            <div class="c-xs-12 c-md-6">
+              <div class="product-rating m-10-b">
+                <span class="fs-7">⭐⭐⭐⭐⭐</span>
+                <span class="fs-6 opacity-7 m-5-l">(6.038)</span>
+              </div>
+              <h2 class="fs-12 fw-800 m-20-b">Whey Protein Natural</h2>
+              <p class="fs-8 opacity-8 m-25-b">Versão sem adição de sabor, ideal para misturar com frutas e preparar receitas fit. Máxima versatilidade e pureza proteica.</p>
+
+              <div class="product-specs m-25-b p-20-all border-rd-5">
+                <h3 class="fs-9 fw-700 m-15-b">Especificações:</h3>
+                <ul class="fs-7 opacity-8">
+                  <li class="m-10-b"><span class="iccon-check-1 text-gold"></span> 25g de proteína por dose</li>
+                  <li class="m-10-b"><span class="iccon-check-1 text-gold"></span> 900g (30 doses)</li>
+                  <li class="m-10-b"><span class="iccon-check-1 text-gold"></span> Zero sabor artificial</li>
+                  <li class="m-10-b"><span class="iccon-check-1 text-gold"></span> Certificado internacional</li>
+                </ul>
+              </div>
+
+              <div class="product-price m-25-b">
+                <span class="price-current fs-13 fw-800 text-gold">R$ 299,99</span>
+                <p class="fs-7 opacity-7 m-5-t">10x de R$ 29,99 sem juros</p>
+                <p class="fs-7 text-gold m-10-t">
+                  <span class="iccon-qr-code-1"></span> R$ 284,99 no PIX (5% OFF)
+                </p>
+              </div>
+
+              <div class="m-25-b">
+                <label class="fs-8 fw-700 m-10-b d-block">Quantidade:</label>
+                <select class="quantity-select fs-8 p-10-all border-rd-5 w-100">
+                  <option value="1">1 Unidade</option>
+                  <option value="2">2 Unidades</option>
+                  <option value="3">3 Unidades</option>
+                  <option value="4">4 Unidades</option>
+                  <option value="5">5 Unidades</option>
+                </select>
+              </div>
+
+              <button class="btn-primary w-100 fs-9 fw-700 m-10-b">
+                <span class="iccon-shopping-cart-1"></span> Adicionar ao Carrinho
+              </button>
+              <button class="btn-secondary w-100 fs-9 fw-700">
+                Comprar Agora
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal Carrinho -->
+  <div data-modal="modal-cart" class="modal-dialog" aria-hidden="true">
+    <div class="dialog-content">
+      <div class="dialog-backdrop" data-modal-hide></div>
+      <div class="dialog-inline w-max-900px xs-w-95">
+        <button class="dialog-close" data-modal-hide></button>
+        <div class="modal-popup border-rd-10 p-40-all xs-p-20-all">
+          <div class="cart-header m-30-b">
+            <h2 class="fs-12 fw-800 d-flex f-items-center f-gap-10">
+              <span class="iccon-shopping-bag-1 text-gold"></span>
+              Meu Carrinho
+            </h2>
+            <p class="fs-7 opacity-7 m-10-t">Revise seus produtos antes de finalizar</p>
+          </div>
+
+          <!-- Empty Cart Message -->
+          <div id="empty-cart-message" class="text-center p-50-tb d-none">
+            <span class="iccon-shopping-cart-1 fs-18 opacity-3 d-block m-20-b"></span>
+            <h3 class="fs-10 fw-700 m-15-b opacity-7">Seu carrinho está vazio</h3>
+            <p class="fs-8 opacity-5 m-20-b">Adicione produtos para começar sua compra</p>
+            <button class="btn-primary fs-8 fw-700" data-modal-hide>
+              Continuar Comprando
+            </button>
+          </div>
+
+          <!-- Cart Items Container -->
+          <div id="cart-items" class="cart-items-container m-30-b">
+            <!-- Items serão inseridos dinamicamente pelo cart.js -->
+          </div>
+
+          <!-- Cart Footer -->
+          <div id="cart-footer" class="cart-footer p-25-t border-top-2 border-color-gold-subtle d-none">
+            <div class="d-flex f-justify-between f-items-center m-20-b">
+              <span class="fs-9 fw-700">Total:</span>
+              <span id="cart-total" class="fs-13 fw-800 text-gold">R$ 0,00</span>
+            </div>
+
+            <div class="cart-actions d-flex f-gap-15 xs-f-direction-column">
+              <button id="clear-cart-btn" class="btn-secondary f-1 fs-8 fw-700">
+                <span class="iccon-trash-1"></span> Limpar Carrinho
+              </button>
+              <button class="btn-primary f-1 fs-8 fw-700" data-modal-hide>
+                <span class="iccon-credit-card-1"></span> Finalizar Compra
+              </button>
+            </div>
+
+            <div class="cart-footer-info text-center m-25-t p-20-t border-top-1 border-color-gold-subtle">
+              <p class="fs-7 opacity-7">
+                <span class="iccon-truck-1 text-gold"></span>
+                Frete grátis para compras acima de R$ 299
+              </p>
+              <p class="fs-7 opacity-7 m-10-t">
+                <span class="iccon-shield-check-1 text-gold"></span>
+                Compra 100% segura e protegida
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Squeleton JS Scripts (Footer) -->
+  <script src="https://cdn.squeleton.dev/squeleton-scripts.v4.min.js"></script>
+
+  <!-- Custom Scripts -->
+  <script src="cart.js"></script>
+  <script src="script.js"></script>
+
+</body>
+</html>

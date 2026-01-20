@@ -1,0 +1,16 @@
+<svg width="200" height="60" viewBox="0 0 200 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Estrela -->
+  <path d="M30 5L35 20L50 20L38 28L43 43L30 35L17 43L22 28L10 20L25 20L30 5Z" fill="#FFD700"/>
+  <path d="M28 8L26 15L32 12L34 15L32 8L30 5L28 8Z" fill="#FFA500"/>
+
+  <!-- Raios da estrela -->
+  <path d="M25 18L20 22L25 20Z" fill="#FFD700"/>
+  <path d="M35 18L40 22L35 20Z" fill="#FFD700"/>
+  <path d="M30 30L28 36L32 36L30 30Z" fill="#FFD700"/>
+
+  <!-- Texto STARS -->
+  <text x="60" y="40" font-family="Arial, sans-serif" font-size="32" font-weight="900" fill="#FFD700" letter-spacing="2">STARS</text>
+
+  <!-- Sombra do texto -->
+  <text x="60" y="40" font-family="Arial, sans-serif" font-size="32" font-weight="900" fill="#FFA500" opacity="0.3" transform="translate(2, 2)" letter-spacing="2">STARS</text>
+</svg>

@@ -119,7 +119,7 @@ star-force/
 
 ---
 
-## 👥 Equipe
+## 👥 Equipe antiga
 
 - **Jonathan Ribeiro** - Designer & Tech Lead
 - **Luan Silva** - Ex Pesquisador de Produtos
@@ -130,7 +130,7 @@ star-force/
 
 ## 📄 Licença
 
-Este projeto foi desenvolvido para fins educacionais e de portfólio.
+Este projeto foi desenvolvido para fins educacionais e com intenção de renovar um projeto antigo.
 
 ---
 
@@ -153,12 +153,6 @@ Contribuições são bem-vindas! Sinta-se à vontade para:
 ---
 
 <div align="center">
-
-**Desenvolvido com 💛 pela equipe Star Force**
-
-![Made with Love](https://img.shields.io/badge/Made%20with-Love-gold)
-![HTML5](https://img.shields.io/badge/HTML5-E34F26?logo=html5&logoColor=white)
-![CSS3](https://img.shields.io/badge/CSS3-1572B6?logo=css3&logoColor=white)
-![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?logo=javascript&logoColor=black)
-
+  ### 💙 Desenvolvendo com muito café e paixão pela programação
+  **Obrigado pela visita!** ⭐
 </div>

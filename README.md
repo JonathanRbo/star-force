@@ -2,7 +2,7 @@
 
 Landing page profissional para e-commerce de suplementos alimentares, desenvolvida com HTML5, CSS3 e JavaScript vanilla.
 
-![Star Force](imagem/logo-starforce.svg)
+![Star Force](imagem/marca.png)
 
 ## 🚀 Demonstração
 

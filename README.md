@@ -1,4 +1,4 @@
-# ⚡ Star Force - Landing Page de Suplementos Premium
+# ⚡ Star Force - Suplementos Premium
 
 Landing page profissional para e-commerce de suplementos alimentares, desenvolvida com HTML5, CSS3 e JavaScript vanilla.
 

@@ -25,10 +25,10 @@ class CartManager {
   // ========================================
   // Adicionar produto ao carrinho
   // ========================================
-  addProduct(product) {
+  addProduct(product, buttonElement = null) {
     // Validar dados do produto
     if (!product.id || !product.name || !product.price) {
-      this.showToast('❌ Erro: dados do produto inválidos', 'error');
+      this.showToast('Erro: dados do produto inválidos', 'error');
       return false;
     }
 
@@ -39,7 +39,7 @@ class CartManager {
 
     if (existingProduct) {
       existingProduct.quantity += quantity;
-      this.showToast(`✓ ${product.name} (${quantity}x) adicionado ao carrinho!`, 'success');
+      this.showToast(`${product.name} (${quantity}x) adicionado ao carrinho!`, 'success');
     } else {
       this.cart.push({
         id: product.id,
@@ -48,7 +48,7 @@ class CartManager {
         image: product.image || '',
         quantity: quantity
       });
-      this.showToast(`✓ ${product.name} adicionado ao carrinho!`, 'success');
+      this.showToast(`${product.name} adicionado ao carrinho!`, 'success');
     }
 
     this.recalculateTotal();
@@ -57,6 +57,11 @@ class CartManager {
 
     // Animar badge do carrinho
     this.animateCartBadge();
+
+    // Animar botão se fornecido
+    if (buttonElement) {
+      this.animateAddButton(buttonElement);
+    }
 
     return true;
   }
@@ -153,12 +158,46 @@ class CartManager {
   animateCartBadge() {
     const badges = document.querySelectorAll('.cart-badge');
     badges.forEach(badge => {
-      badge.style.transition = 'transform 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55)';
-      badge.style.transform = 'scale(1.5)';
+      badge.classList.add('cart-badge-pulse');
       setTimeout(() => {
-        badge.style.transform = 'scale(1)';
-      }, 300);
+        badge.classList.remove('cart-badge-pulse');
+      }, 600);
     });
+
+    // Animar também o botão do carrinho no header
+    const cartButtons = document.querySelectorAll('[data-modal-show="modal-cart"]');
+    cartButtons.forEach(btn => {
+      btn.classList.add('cart-btn-shake');
+      setTimeout(() => {
+        btn.classList.remove('cart-btn-shake');
+      }, 500);
+    });
+  }
+
+  // ========================================
+  // Animar botão de adicionar
+  // ========================================
+  animateAddButton(button) {
+    if (!button) return;
+
+    const originalText = button.innerHTML;
+    const originalWidth = button.offsetWidth;
+
+    // Fixar largura para evitar "pulo"
+    button.style.minWidth = originalWidth + 'px';
+
+    // Mudar para estado de sucesso
+    button.classList.add('btn-added');
+    button.innerHTML = '<span class="iccon-check-1"></span> Adicionado!';
+    button.disabled = true;
+
+    // Voltar ao estado original após 2s
+    setTimeout(() => {
+      button.classList.remove('btn-added');
+      button.innerHTML = originalText;
+      button.disabled = false;
+      button.style.minWidth = '';
+    }, 2000);
   }
 
   // ========================================
@@ -553,13 +592,28 @@ class CartManager {
   // Toast Notification
   // ========================================
   showToast(message, type = 'info') {
-    if (typeof Toastify !== 'undefined') {
-      const backgrounds = {
-        success: 'linear-gradient(135deg, #FFD700 0%, #FFA500 100%)',
-        error: 'linear-gradient(135deg, #ff6b6b 0%, #ee5a52 100%)',
-        info: 'linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)'
-      };
+    // Configurações por tipo
+    const config = {
+      success: {
+        background: 'linear-gradient(135deg, #FFD700 0%, #FFA500 100%)',
+        color: '#0a0a0a',
+        icon: '✓'
+      },
+      error: {
+        background: 'linear-gradient(135deg, #ff6b6b 0%, #ee5a52 100%)',
+        color: '#ffffff',
+        icon: '✕'
+      },
+      info: {
+        background: 'linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)',
+        color: '#ffffff',
+        icon: 'ℹ'
+      }
+    };
 
+    const settings = config[type] || config.info;
+
+    if (typeof Toastify !== 'undefined') {
       Toastify({
         text: message,
         duration: 3000,
@@ -567,39 +621,60 @@ class CartManager {
         gravity: 'top',
         position: 'right',
         stopOnFocus: true,
+        className: `toast-${type}`,
         style: {
-          background: backgrounds[type] || backgrounds.info,
-          color: type === 'success' ? '#0a0a0a' : '#ffffff',
-          fontWeight: '700',
-          borderRadius: '8px',
-          boxShadow: '0 4px 20px rgba(0, 0, 0, 0.3)',
-          padding: '16px 24px'
+          background: settings.background,
+          color: settings.color,
+          fontWeight: '600',
+          borderRadius: '10px',
+          boxShadow: '0 8px 30px rgba(0, 0, 0, 0.25)',
+          padding: '14px 22px',
+          fontSize: '14px'
         }
       }).showToast();
     } else {
       // Fallback: criar toast customizado
-      const toast = document.createElement('div');
-      toast.className = 'custom-toast';
-      toast.textContent = message;
-      toast.style.cssText = `
-        position: fixed;
-        top: 20px;
-        right: 20px;
-        background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
-        color: #0a0a0a;
-        padding: 16px 24px;
-        border-radius: 8px;
-        font-weight: 700;
-        z-index: 99999;
-        animation: slideInRight 0.3s ease-out;
-      `;
-      document.body.appendChild(toast);
-
-      setTimeout(() => {
-        toast.style.animation = 'slideOutRight 0.3s ease-out';
-        setTimeout(() => toast.remove(), 300);
-      }, 3000);
+      this.showCustomToast(message, settings);
     }
+  }
+
+  // ========================================
+  // Toast Customizado (fallback)
+  // ========================================
+  showCustomToast(message, settings) {
+    // Remover toast existente se houver
+    const existingToast = document.querySelector('.custom-toast');
+    if (existingToast) existingToast.remove();
+
+    const toast = document.createElement('div');
+    toast.className = 'custom-toast';
+    toast.innerHTML = `
+      <span class="toast-icon">${settings.icon}</span>
+      <span class="toast-message">${message}</span>
+    `;
+    toast.style.cssText = `
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: ${settings.background};
+      color: ${settings.color};
+      padding: 14px 22px;
+      border-radius: 10px;
+      font-weight: 600;
+      font-size: 14px;
+      z-index: 99999;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
+      animation: toastSlideIn 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    `;
+    document.body.appendChild(toast);
+
+    setTimeout(() => {
+      toast.style.animation = 'toastSlideOut 0.3s ease-in forwards';
+      setTimeout(() => toast.remove(), 300);
+    }, 3000);
   }
 }
 

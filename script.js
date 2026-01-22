@@ -233,13 +233,14 @@ function initCartSystem() {
         const quantity = parseInt(quantitySelect.value) || 1;
 
         if (productData && window.cartManager) {
+          // Passar o botão para animar
           window.cartManager.addProduct({
             id: productData.id,
             name: productData.name,
             price: productData.price,
             image: productData.image,
             quantity: quantity
-          });
+          }, this); // 'this' é o botão clicado
         }
       });
     }

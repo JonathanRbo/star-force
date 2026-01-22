@@ -231,7 +231,7 @@ class CartManager {
   // ========================================
   createCartItemElement(item) {
     const div = document.createElement('div');
-    div.className = 'cart-item d-flex f-gap-15 f-items-center p-20-all border-rd-10 m-15-b wow fadeIn';
+    div.className = 'cart-item d-flex f-gap-15 f-items-center';
     div.setAttribute('data-product-id', item.id);
 
     const itemTotal = (item.price * item.quantity).toFixed(2).replace('.', ',');
@@ -240,45 +240,47 @@ class CartManager {
     div.innerHTML = `
       ${item.image ? `
         <div class="cart-item-image-wrapper">
-          <img src="${item.image}" alt="${item.name}" class="cart-item-image">
+          <img src="${item.image}" alt="${item.name}" class="cart-item-image" loading="lazy">
         </div>
       ` : `
         <div class="cart-item-image-wrapper cart-item-no-image">
-          <span class="iccon-package-1 fs-12 opacity-3"></span>
+          <span class="iccon-package-1"></span>
         </div>
       `}
 
-      <div class="cart-item-info f-1">
-        <h4 class="fs-9 fw-700 m-5-b">${item.name}</h4>
-        <p class="fs-7 opacity-7 m-10-b">R$ ${itemPrice} / unidade</p>
+      <div class="cart-item-info">
+        <h4 class="fs-9 fw-700">${item.name}</h4>
+        <p class="fs-7 opacity-6">R$ ${itemPrice} / unidade</p>
 
-        <div class="cart-item-controls d-flex f-gap-10 f-items-center m-10-t">
-          <button class="cart-qty-btn cart-qty-minus" data-id="${item.id}" aria-label="Diminuir quantidade" title="Diminuir quantidade">
-            <span class="iccon-minus-1"></span>
-          </button>
+        <div class="cart-item-controls">
+          <div class="cart-qty-controls">
+            <button class="cart-qty-btn cart-qty-minus" data-id="${item.id}" aria-label="Diminuir quantidade" title="Diminuir">
+              <span class="iccon-minus-1"></span>
+            </button>
 
-          <input
-            type="number"
-            class="cart-qty-input"
-            value="${item.quantity}"
-            min="1"
-            max="99"
-            data-id="${item.id}"
-            aria-label="Quantidade"
-          >
+            <input
+              type="number"
+              class="cart-qty-input"
+              value="${item.quantity}"
+              min="1"
+              max="99"
+              data-id="${item.id}"
+              aria-label="Quantidade"
+            >
 
-          <button class="cart-qty-btn cart-qty-plus" data-id="${item.id}" aria-label="Aumentar quantidade" title="Aumentar quantidade">
-            <span class="iccon-plus-1"></span>
-          </button>
+            <button class="cart-qty-btn cart-qty-plus" data-id="${item.id}" aria-label="Aumentar quantidade" title="Aumentar">
+              <span class="iccon-plus-1"></span>
+            </button>
+          </div>
 
-          <div class="cart-item-subtotal m-15-l">
-            <span class="fs-7 opacity-7 d-block">Subtotal:</span>
-            <span class="fs-9 fw-800 text-gold">R$ ${itemTotal}</span>
+          <div class="cart-item-total">
+            <span class="fs-6 opacity-5 d-block">Subtotal</span>
+            <span class="fw-800">R$ ${itemTotal}</span>
           </div>
         </div>
       </div>
 
-      <button class="cart-remove-btn" data-id="${item.id}" aria-label="Remover produto" title="Remover do carrinho">
+      <button class="cart-remove-btn" data-id="${item.id}" aria-label="Remover produto" title="Remover">
         <span class="iccon-trash-2-1"></span>
       </button>
     `;

@@ -67,6 +67,73 @@ class CartManager {
   }
 
   // ========================================
+  // Comprar Agora (adiciona e vai direto pro checkout)
+  // ========================================
+  buyNow(product, buttonElement = null) {
+    // Validar dados do produto
+    if (!product.id || !product.name || !product.price) {
+      this.showToast('Erro: dados do produto inválidos', 'error');
+      return false;
+    }
+
+    const quantity = parseInt(product.quantity) || 1;
+
+    // Verificar se produto já existe no carrinho
+    const existingProduct = this.cart.find(item => item.id === product.id);
+
+    if (existingProduct) {
+      // Atualizar quantidade do produto existente
+      existingProduct.quantity += quantity;
+    } else {
+      // Adicionar novo produto ao carrinho existente
+      this.cart.push({
+        id: product.id,
+        name: product.name,
+        price: parseFloat(product.price),
+        image: product.image || '',
+        quantity: quantity
+      });
+    }
+
+    this.recalculateTotal();
+    this.updateUI();
+    this.saveToLocalStorage();
+
+    // Animar botão se fornecido
+    if (buttonElement) {
+      const originalText = buttonElement.innerHTML;
+      buttonElement.classList.add('btn-buying');
+      buttonElement.innerHTML = '<span class="iccon-loader-1 spin"></span> Processando...';
+      buttonElement.disabled = true;
+
+      // Fechar modal do produto e abrir checkout
+      setTimeout(() => {
+        // Fechar modal do produto
+        const productModal = buttonElement.closest('.modal-dialog');
+        if (productModal) {
+          const backdrop = productModal.querySelector('.dialog-backdrop');
+          if (backdrop) backdrop.click();
+        }
+
+        // Restaurar botão
+        buttonElement.classList.remove('btn-buying');
+        buttonElement.innerHTML = originalText;
+        buttonElement.disabled = false;
+
+        // Abrir checkout após fechar modal
+        setTimeout(() => {
+          this.openCheckout();
+        }, 300);
+      }, 800);
+    } else {
+      // Sem animação, ir direto
+      this.openCheckout();
+    }
+
+    return true;
+  }
+
+  // ========================================
   // Atualizar quantidade
   // ========================================
   updateQuantity(productId, quantity) {

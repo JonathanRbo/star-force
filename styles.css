@@ -728,22 +728,22 @@ a:hover {
 }
 
 /* Tamanhos específicos para cada modal */
-.dialog-inline.w-max-800px {
+.dialog-inline.w-800px {
   max-width: 680px !important;
   width: 90vw !important;
 }
 
-.dialog-inline.w-max-900px {
+.dialog-inline.w-900px {
   max-width: 750px !important;
   width: 90vw !important;
 }
 
-.dialog-inline.w-max-1000px {
+.dialog-inline.w-1000px {
   max-width: 900px !important;
   width: 92vw !important;
 }
 
-.dialog-inline.w-max-600px {
+.dialog-inline.w-600px {
   max-width: 480px !important;
   width: 88vw !important;
 }
@@ -843,12 +843,12 @@ a:hover {
     padding: 25px !important;
   }
 
-  .dialog-inline.w-max-800px,
-  .dialog-inline.w-max-900px {
+  .dialog-inline.w-800px,
+  .dialog-inline.w-900px {
     max-width: 90vw !important;
   }
 
-  .dialog-inline.w-max-1000px {
+  .dialog-inline.w-1000px {
     max-width: 95vw !important;
   }
 }
@@ -867,10 +867,10 @@ a:hover {
     max-width: none !important;
   }
 
-  .dialog-inline.w-max-800px,
-  .dialog-inline.w-max-900px,
-  .dialog-inline.w-max-1000px,
-  .dialog-inline.w-max-600px {
+  .dialog-inline.w-800px,
+  .dialog-inline.w-900px,
+  .dialog-inline.w-1000px,
+  .dialog-inline.w-600px {
     width: calc(100vw - 30px) !important;
     max-width: none !important;
   }

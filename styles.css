@@ -1,10 +1,23 @@
 /* ========================================
    STAR FORCE - Custom Styles
    Landing Page de Suplementos Premium
-   Otimizado com Squeleton Framework
+   Otimizado com Squeleton Framework v4
+
+   ARQUITETURA CSS:
+   1. Variáveis CSS
+   2. Reset e Base
+   3. Componentes (Header, Buttons, Cards)
+   4. Seções (Hero, Certificações, etc)
+   5. Modais
+   6. Carrinho
+   7. Checkout
+   8. Animações
+   9. Responsivo
 ======================================== */
 
-/* --- Variáveis CSS Customizadas --- */
+/* ===========================================
+   1. VARIÁVEIS CSS CUSTOMIZADAS
+=========================================== */
 :root {
   --color-gold: #FFD700;
   --color-gold-dark: #FFA500;
@@ -17,16 +30,18 @@
   --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* --- Base Styles --- */
+/* ===========================================
+   2. RESET E BASE
+=========================================== */
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   background: var(--color-dark);
   color: #ffffff;
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   overflow-x: hidden;
-}
-
-html {
-  scroll-behavior: smooth;
 }
 
 ::selection {
@@ -40,19 +55,20 @@ a {
   text-decoration: none;
 }
 
-a:visited {
-  color: inherit !important;
-}
-
-a:link {
-  color: inherit;
-}
-
+a:link,
 a:hover {
   color: inherit;
 }
 
-/* --- Header Customizado --- */
+a:visited {
+  color: inherit;
+}
+
+/* ===========================================
+   3. COMPONENTES
+=========================================== */
+
+/* --- Header --- */
 .header {
   background: rgba(10, 10, 10, 0.95);
   backdrop-filter: blur(10px);
@@ -76,18 +92,7 @@ a:hover {
   filter: brightness(1.2);
 }
 
-@media (max-width: 991px) {
-  .logo-img {
-    width: 110px;
-  }
-}
-
-@media (max-width: 639px) {
-  .logo-img {
-    width: 95px;
-  }
-}
-
+/* --- Navigation Links --- */
 .nav-link {
   position: relative;
   transition: var(--transition-smooth);
@@ -96,7 +101,7 @@ a:hover {
 }
 
 .nav-link:visited {
-  color: #ffffff !important;
+  color: #ffffff;
 }
 
 .nav-link::after {
@@ -111,7 +116,7 @@ a:hover {
 }
 
 .nav-link:hover {
-  color: var(--color-gold) !important;
+  color: var(--color-gold);
 }
 
 .nav-link:hover::after {
@@ -146,12 +151,12 @@ a:hover {
 }
 
 .mobile-nav-link:visited {
-  color: #ffffff !important;
+  color: #ffffff;
 }
 
 .mobile-nav-link:hover {
   background: rgba(255, 215, 0, 0.1);
-  color: var(--color-gold) !important;
+  color: var(--color-gold);
   padding-left: 25px;
 }
 
@@ -198,8 +203,8 @@ a:hover {
 }
 
 .btn-primary:active {
-  transform: translateY(-1px) !important;
-  box-shadow: var(--shadow-gold) !important;
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-gold);
 }
 
 .btn-secondary {
@@ -224,8 +229,8 @@ a:hover {
 }
 
 .btn-secondary:active {
-  transform: translateY(-1px) !important;
-  box-shadow: 0 2px 10px rgba(255, 215, 0, 0.2) !important;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 10px rgba(255, 215, 0, 0.2);
 }
 
 .btn-mobile {
@@ -255,6 +260,10 @@ a:hover {
   font-size: 11px;
   font-weight: 800;
 }
+
+/* ===========================================
+   4. SEÇÕES
+=========================================== */
 
 /* --- Hero Section --- */
 .hero {
@@ -301,7 +310,7 @@ a:hover {
   color: var(--color-gold);
 }
 
-/* --- Certificações Reformuladas --- */
+/* --- Certificações --- */
 .cert-card {
   background: linear-gradient(145deg, rgba(42, 42, 42, 0.95) 0%, rgba(26, 26, 26, 0.98) 100%);
   border: 2px solid rgba(255, 215, 0, 0.2);
@@ -339,7 +348,6 @@ a:hover {
   background: linear-gradient(145deg, rgba(255, 215, 0, 0.08) 0%, rgba(26, 26, 26, 0.98) 100%);
 }
 
-/* Badge superior */
 .cert-badge {
   background: rgba(255, 215, 0, 0.1);
   border: 1px solid rgba(255, 215, 0, 0.3);
@@ -351,7 +359,6 @@ a:hover {
   border-color: var(--color-gold);
 }
 
-/* Wrapper do ícone */
 .cert-icon-wrapper {
   position: relative;
   display: inline-block;
@@ -399,7 +406,6 @@ a:hover {
   transform: scale(1.15);
 }
 
-/* Título da certificação */
 .cert-body h3 {
   letter-spacing: 1px;
   transition: var(--transition-smooth);
@@ -410,13 +416,11 @@ a:hover {
   transform: translateX(3px);
 }
 
-/* Descrição */
 .cert-body p {
   color: rgba(255, 255, 255, 0.85);
   line-height: 1.6;
 }
 
-/* Meta info (rodapé) */
 .cert-meta {
   margin-top: auto;
 }
@@ -438,9 +442,13 @@ a:hover {
   margin-right: 5px;
 }
 
-/* Line height helper */
+/* --- Helpers --- */
 .lh-14 {
   line-height: 1.6;
+}
+
+.lh-15 {
+  line-height: 1.5;
 }
 
 /* --- Diferenciais --- */
@@ -534,14 +542,14 @@ a:hover {
   box-shadow: var(--shadow-gold);
 }
 
-/* --- Carousel Squeleton Override --- */
+/* --- Carousel Override --- */
 .slide__prev,
 .slide__next {
-  display: none !important;
+  display: none;
 }
 
 .slide__viewport {
-  padding: 0 !important;
+  padding: 0;
 }
 
 .slide__dots {
@@ -641,11 +649,11 @@ a:hover {
 }
 
 .footer-links a:visited {
-  color: rgba(255, 255, 255, 0.7) !important;
+  color: rgba(255, 255, 255, 0.7);
 }
 
 .footer-links a:hover {
-  color: var(--color-gold) !important;
+  color: var(--color-gold);
   padding-left: 5px;
 }
 
@@ -671,8 +679,8 @@ a:hover {
 }
 
 .social-link:active {
-  transform: translateY(-2px) scale(1.05) !important;
-  box-shadow: 0 2px 10px rgba(255, 215, 0, 0.2) !important;
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 2px 10px rgba(255, 215, 0, 0.2);
 }
 
 .payment-icon {
@@ -686,66 +694,73 @@ a:hover {
   transform: scale(1.1);
 }
 
-/* --- Modal --- */
-.modal-dialog {
-  position: fixed !important;
-  inset: 0 !important;
-  z-index: 9999 !important;
-  display: flex !important;
-  padding: 0 !important;
+.border-color-dark-alt {
+  border-color: rgba(255, 255, 255, 0.1);
 }
 
-.modal-dialog[aria-hidden="true"] {
-  display: none !important;
+/* ===========================================
+   5. MODAIS
+   Usando seletores mais específicos para evitar !important
+=========================================== */
+body .modal-dialog {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  padding: 0;
 }
 
-.dialog-content {
-  position: fixed !important;
-  inset: 0 !important;
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  padding: 40px !important;
-  overflow-y: auto !important;
-  overflow-x: hidden !important;
+body .modal-dialog[aria-hidden="true"] {
+  display: none;
 }
 
-.dialog-backdrop {
-  position: fixed !important;
-  inset: 0 !important;
-  background: rgba(0, 0, 0, 0.85) !important;
-  backdrop-filter: blur(8px) !important;
-  -webkit-backdrop-filter: blur(8px) !important;
-  z-index: -1 !important;
+body .modal-dialog .dialog-content {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
-.dialog-inline {
-  position: relative !important;
-  margin: auto !important;
-  max-height: 85vh !important;
-  overflow: visible !important;
-  animation: modalSlideIn 0.3s ease-out !important;
+body .modal-dialog .dialog-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: -1;
+}
+
+body .modal-dialog .dialog-inline {
+  position: relative;
+  margin: auto;
+  max-height: 85vh;
+  overflow: visible;
+  animation: modalSlideIn 0.3s ease-out;
 }
 
 /* Tamanhos específicos para cada modal */
-.dialog-inline.w-800px {
-  max-width: 680px !important;
-  width: 90vw !important;
+body .modal-dialog .dialog-inline.w-800px {
+  max-width: 680px;
+  width: 90vw;
 }
 
-.dialog-inline.w-900px {
-  max-width: 750px !important;
-  width: 90vw !important;
+body .modal-dialog .dialog-inline.w-900px {
+  max-width: 750px;
+  width: 90vw;
 }
 
-.dialog-inline.w-1000px {
-  max-width: 900px !important;
-  width: 92vw !important;
+body .modal-dialog .dialog-inline.w-1000px {
+  max-width: 900px;
+  width: 92vw;
 }
 
-.dialog-inline.w-600px {
-  max-width: 480px !important;
-  width: 88vw !important;
+body .modal-dialog .dialog-inline.w-600px {
+  max-width: 480px;
+  width: 88vw;
 }
 
 @keyframes modalSlideIn {
@@ -759,45 +774,45 @@ a:hover {
   }
 }
 
-.dialog-close {
-  position: absolute !important;
-  top: -10px !important;
-  right: -10px !important;
-  width: 36px !important;
-  height: 36px !important;
-  background: var(--gradient-gold) !important;
-  color: var(--color-dark) !important;
-  border: 2px solid var(--color-dark) !important;
-  border-radius: 50% !important;
-  cursor: pointer !important;
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  font-size: 16px !important;
-  font-weight: bold !important;
-  transition: var(--transition-smooth) !important;
-  z-index: 10 !important;
-  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.4) !important;
+body .modal-dialog .dialog-close {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  width: 36px;
+  height: 36px;
+  background: var(--gradient-gold);
+  color: var(--color-dark);
+  border: 2px solid var(--color-dark);
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  font-weight: bold;
+  transition: var(--transition-smooth);
+  z-index: 10;
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.4);
 }
 
-.dialog-close:hover {
-  transform: rotate(90deg) scale(1.1) !important;
-  box-shadow: var(--shadow-gold) !important;
+body .modal-dialog .dialog-close:hover {
+  transform: rotate(90deg) scale(1.1);
+  box-shadow: var(--shadow-gold);
 }
 
-.dialog-close:active {
-  transform: rotate(90deg) scale(1) !important;
+body .modal-dialog .dialog-close:active {
+  transform: rotate(90deg) scale(1);
 }
 
-.modal-popup {
-  background: linear-gradient(145deg, #2a2a2a 0%, #1a1a1a 100%) !important;
+body .modal-dialog .modal-popup {
+  background: linear-gradient(145deg, #2a2a2a 0%, #1a1a1a 100%);
   box-shadow:
     0 20px 60px rgba(0, 0, 0, 0.5),
     0 0 0 1px rgba(255, 215, 0, 0.12),
-    inset 0 1px 0 rgba(255, 255, 255, 0.04) !important;
-  max-height: 80vh !important;
-  overflow-y: auto !important;
-  overflow-x: hidden !important;
+    inset 0 1px 0 rgba(255, 255, 255, 0.04);
+  max-height: 80vh;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 .modal-popup::-webkit-scrollbar {
@@ -818,79 +833,29 @@ a:hover {
   background: var(--color-gold);
 }
 
-/* Corrigir texto dourado dentro dos modais - sobrescrever gradiente transparente */
-.modal-popup .text-gold,
-.modal-popup span.text-gold,
-.modal-popup p.text-gold,
-.modal-popup .product-price .text-gold,
-.modal-popup .price-current.text-gold {
-  color: #FFD700 !important;
-  background: transparent !important;
-  -webkit-background-clip: unset !important;
-  -webkit-text-fill-color: #FFD700 !important;
-  background-clip: unset !important;
+/* Corrigir texto dourado dentro dos modais */
+body .modal-popup .text-gold,
+body .modal-popup span.text-gold,
+body .modal-popup p.text-gold,
+body .modal-popup .product-price .text-gold,
+body .modal-popup .price-current.text-gold {
+  color: #FFD700;
+  background: transparent;
+  -webkit-background-clip: unset;
+  -webkit-text-fill-color: #FFD700;
+  background-clip: unset;
 }
 
-.modal-popup .price-current {
-  font-size: 26px !important;
+body .modal-popup .price-current {
+  font-size: 26px;
   display: block;
   margin-bottom: 8px;
 }
 
-/* Tablet adjustments */
-@media (max-width: 991px) {
-  .dialog-content {
-    padding: 25px !important;
-  }
-
-  .dialog-inline.w-800px,
-  .dialog-inline.w-900px {
-    max-width: 90vw !important;
-  }
-
-  .dialog-inline.w-1000px {
-    max-width: 95vw !important;
-  }
-}
-
-/* Mobile modal adjustments */
-@media (max-width: 639px) {
-  .dialog-content {
-    padding: 15px !important;
-    align-items: flex-start !important;
-    padding-top: 30px !important;
-  }
-
-  .dialog-inline {
-    max-height: 90vh !important;
-    width: calc(100vw - 30px) !important;
-    max-width: none !important;
-  }
-
-  .dialog-inline.w-800px,
-  .dialog-inline.w-900px,
-  .dialog-inline.w-1000px,
-  .dialog-inline.w-600px {
-    width: calc(100vw - 30px) !important;
-    max-width: none !important;
-  }
-
-  .dialog-close {
-    top: -8px !important;
-    right: 5px !important;
-    width: 32px !important;
-    height: 32px !important;
-    font-size: 14px !important;
-  }
-
-  .modal-popup {
-    max-height: 85vh !important;
-    padding: 20px !important;
-  }
-}
-
-/* --- Product Modal Enhanced Styles --- */
-.modal-popup .product-rating {
+/* ===========================================
+   6. CARRINHO E PRODUTOS NO MODAL
+=========================================== */
+body .modal-popup .product-rating {
   background: rgba(255, 215, 0, 0.08);
   display: inline-flex;
   align-items: center;
@@ -900,13 +865,13 @@ a:hover {
   border: 1px solid rgba(255, 215, 0, 0.2);
 }
 
-.modal-popup h2 {
-  font-size: 22px !important;
-  margin-bottom: 12px !important;
+body .modal-popup h2 {
+  font-size: 22px;
+  margin-bottom: 12px;
   color: #ffffff;
 }
 
-.modal-popup > .row > div:first-child img {
+body .modal-popup > .row > div:first-child img {
   border: 2px solid rgba(255, 215, 0, 0.2);
   transition: var(--transition-smooth);
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
@@ -914,14 +879,14 @@ a:hover {
   object-fit: cover;
 }
 
-.modal-popup > .row > div:first-child img:hover {
+body .modal-popup > .row > div:first-child img:hover {
   border-color: var(--color-gold);
 }
 
-.modal-popup p {
-  font-size: 14px !important;
+body .modal-popup p {
+  font-size: 14px;
   line-height: 1.5;
-  margin-bottom: 15px !important;
+  margin-bottom: 15px;
   color: rgba(255, 255, 255, 0.85);
 }
 
@@ -930,8 +895,8 @@ a:hover {
   border: 1px solid rgba(255, 215, 0, 0.2);
   position: relative;
   overflow: hidden;
-  padding: 15px !important;
-  margin-bottom: 15px !important;
+  padding: 15px;
+  margin-bottom: 15px;
 }
 
 .product-specs::before {
@@ -946,8 +911,8 @@ a:hover {
 
 .product-specs h3 {
   color: var(--color-gold);
-  font-size: 14px !important;
-  margin-bottom: 10px !important;
+  font-size: 14px;
+  margin-bottom: 10px;
 }
 
 .product-specs ul {
@@ -976,116 +941,71 @@ a:hover {
 }
 
 /* Product Price in Modal */
-.modal-popup .product-price {
+body .modal-popup .product-price {
   background: rgba(0, 0, 0, 0.25);
   padding: 12px 15px;
   border-radius: 10px;
   border: 1px solid rgba(255, 215, 0, 0.12);
-  margin-bottom: 15px !important;
+  margin-bottom: 15px;
 }
 
-
 /* Estilo do badge de desconto PIX */
-.modal-popup .product-price p.text-gold {
-  background: rgba(255, 215, 0, 0.08) !important;
+body .modal-popup .product-price p.text-gold {
+  background: rgba(255, 215, 0, 0.08);
   padding: 5px 10px;
   border-radius: 5px;
   display: inline-flex;
   align-items: center;
   gap: 5px;
-  font-size: 13px !important;
+  font-size: 13px;
   border: 1px dashed rgba(255, 215, 0, 0.3);
   margin-top: 10px;
 }
 
-/* Quantity Select Enhanced */
-.modal-popup label {
-  font-size: 14px !important;
-  margin-bottom: 6px !important;
+/* Quantity Select */
+body .modal-popup label {
+  font-size: 14px;
+  margin-bottom: 6px;
 }
 
-.modal-popup .quantity-select {
+body .modal-popup .quantity-select {
   background: var(--color-dark);
   border: 1px solid rgba(255, 215, 0, 0.2);
   padding: 10px 12px;
   font-size: 14px;
 }
 
-.modal-popup .quantity-select:focus {
+body .modal-popup .quantity-select:focus {
   border-color: var(--color-gold);
   box-shadow: 0 0 0 3px rgba(255, 215, 0, 0.1);
 }
 
-/* Modal Buttons Enhanced */
-.modal-popup .btn-primary,
-.modal-popup .btn-secondary {
+/* Modal Buttons */
+body .modal-popup .btn-primary,
+body .modal-popup .btn-secondary {
   padding: 12px 20px;
   font-size: 14px;
   border-radius: 8px;
 }
 
-.modal-popup .btn-primary {
+body .modal-popup .btn-primary {
   box-shadow: 0 3px 15px rgba(255, 215, 0, 0.35);
 }
 
 /* Ajustes de espaçamento no modal de produto */
-.modal-popup .row {
-  gap: 20px !important;
+body .modal-popup .row {
+  gap: 20px;
 }
 
-.modal-popup .m-25-b {
-  margin-bottom: 15px !important;
+body .modal-popup .m-25-b {
+  margin-bottom: 15px;
 }
 
-.modal-popup .m-20-b {
-  margin-bottom: 12px !important;
+body .modal-popup .m-20-b {
+  margin-bottom: 12px;
 }
 
-/* Tablet Product Modal */
-@media (max-width: 991px) {
-  .modal-popup > .row {
-    flex-direction: column;
-  }
-
-  .modal-popup > .row > div:first-child {
-    max-height: 250px;
-    overflow: hidden;
-    border-radius: 8px;
-  }
-
-  .modal-popup > .row > div:first-child img {
-    width: 100%;
-    height: 250px;
-    max-height: 250px;
-  }
-}
-
-/* Mobile Product Modal */
-@media (max-width: 639px) {
-  .modal-popup h2 {
-    font-size: 18px !important;
-  }
-
-  .modal-popup > .row > div:first-child {
-    max-height: 180px;
-  }
-
-  .modal-popup > .row > div:first-child img {
-    height: 180px;
-    max-height: 180px;
-  }
-
-  .modal-popup .product-price .price-current {
-    font-size: 20px !important;
-  }
-
-  .modal-popup .btn-primary,
-  .modal-popup .btn-secondary {
-    padding: 10px 16px;
-    font-size: 13px;
-  }
-}
-
+/* Quantity Select Global */
 .quantity-select {
   background: var(--color-dark);
   color: #ffffff;
@@ -1104,68 +1024,12 @@ a:hover {
   box-shadow: 0 0 0 3px rgba(255, 215, 0, 0.1);
 }
 
-/* --- Responsive --- */
-@media (max-width: 991px) {
-  .logo-footer {
-    width: 140px;
-  }
-}
-
-@media (max-width: 639px) {
-  .logo-footer {
-    width: 120px;
-  }
-
-  .product-image img {
-    height: 250px;
-  }
-
-  .btn-cta {
-    padding: 16px 32px;
-    font-size: 18px;
-  }
-}
-
-/* --- Utilities Extras --- */
-.lh-15 {
-  line-height: 1.5;
-}
-
-.border-color-dark-alt {
-  border-color: rgba(255, 255, 255, 0.1);
-}
-
-/* --- Scroll to Top Button --- */
-.scroll-to-top {
-  position: fixed;
-  bottom: 30px;
-  right: 30px;
-  background: var(--gradient-gold);
-  color: var(--color-dark);
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  border: none;
-  cursor: pointer;
-  align-items: center;
-  justify-content: center;
-  font-size: 24px;
-  box-shadow: var(--shadow-gold);
-  z-index: 999;
-  transition: var(--transition-smooth);
-}
-
-.scroll-to-top:hover {
-  transform: translateY(-5px) scale(1.1);
-  box-shadow: var(--shadow-gold-lg);
-}
-
-/* --- Cart Modal Styles Enhanced --- */
+/* --- Cart Modal Styles --- */
 .cart-header {
   position: relative;
   padding-bottom: 15px;
   border-bottom: 1px solid rgba(255, 215, 0, 0.15);
-  margin-bottom: 15px !important;
+  margin-bottom: 15px;
 }
 
 .cart-header h2 {
@@ -1173,12 +1037,12 @@ a:hover {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  font-size: 20px !important;
+  font-size: 20px;
 }
 
 .cart-header p {
-  font-size: 13px !important;
-  margin-top: 5px !important;
+  font-size: 13px;
+  margin-top: 5px;
 }
 
 .cart-header::after {
@@ -1275,11 +1139,11 @@ a:hover {
 .cart-item-info h4 {
   color: #fff;
   margin-bottom: 3px;
-  font-size: 14px !important;
+  font-size: 14px;
 }
 
 .cart-item-info p {
-  font-size: 12px !important;
+  font-size: 12px;
 }
 
 .cart-item-controls {
@@ -1370,7 +1234,7 @@ a:hover {
 }
 
 .cart-item-total span:first-child {
-  font-size: 10px !important;
+  font-size: 10px;
 }
 
 .cart-remove-btn {
@@ -1393,7 +1257,7 @@ a:hover {
   transform: scale(0.9);
 }
 
-/* Cart Footer Enhanced */
+/* Cart Footer */
 .cart-footer {
   background: linear-gradient(180deg, rgba(255, 215, 0, 0.05) 0%, transparent 100%);
   border-radius: 12px;
@@ -1442,7 +1306,7 @@ a:hover {
   gap: 10px;
 }
 
-/* Empty Cart Enhanced */
+/* Empty Cart */
 #empty-cart-message {
   padding: 60px 30px;
 }
@@ -1461,108 +1325,9 @@ a:hover {
   margin: 0 auto 25px;
 }
 
-/* Responsive Cart Enhanced */
-@media (max-width: 639px) {
-  .cart-item {
-    padding: 12px;
-  }
-
-  .cart-item-image-wrapper {
-    width: 70px;
-    height: 70px;
-  }
-
-  .cart-item-info {
-    padding: 0 10px;
-  }
-
-  .cart-item-info h4 {
-    font-size: 14px;
-  }
-
-  .cart-item-controls {
-    width: 100%;
-    justify-content: space-between;
-    margin-top: 15px;
-    padding-top: 15px;
-    border-top: 1px solid rgba(255, 215, 0, 0.1);
-  }
-
-  .cart-item-total {
-    text-align: right;
-    min-width: auto;
-  }
-
-  .cart-footer {
-    padding: 15px;
-  }
-
-  .cart-actions {
-    flex-direction: column;
-    gap: 10px;
-  }
-}
-
-@media (max-width: 480px) {
-  .cart-items-container {
-    max-height: 300px;
-  }
-
-  .cart-qty-btn {
-    width: 32px;
-    height: 32px;
-  }
-
-  .cart-qty-input {
-    width: 40px;
-    height: 32px;
-  }
-}
-
-/* --- Animations --- */
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-@keyframes fadeInLeft {
-  from {
-    opacity: 0;
-    transform: translateX(-30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-@keyframes fadeInRight {
-  from {
-    opacity: 0;
-    transform: translateX(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-/* --- Checkout Styles --- */
+/* ===========================================
+   7. CHECKOUT
+=========================================== */
 .checkout-form .form-input {
   background: var(--color-dark);
   color: #ffffff;
@@ -1635,7 +1400,7 @@ a:hover {
   border-radius: 8px;
 }
 
-/* --- Success Modal Styles --- */
+/* --- Success Modal --- */
 .success-checkmark {
   width: 80px;
   height: 80px;
@@ -1727,69 +1492,25 @@ a:hover {
 }
 
 @keyframes rotate-circle {
-  0% {
-    transform: rotate(-45deg);
-  }
-  5% {
-    transform: rotate(-45deg);
-  }
-  12% {
-    transform: rotate(-405deg);
-  }
-  100% {
-    transform: rotate(-405deg);
-  }
+  0% { transform: rotate(-45deg); }
+  5% { transform: rotate(-45deg); }
+  12% { transform: rotate(-405deg); }
+  100% { transform: rotate(-405deg); }
 }
 
 @keyframes icon-line-tip {
-  0% {
-    width: 0;
-    left: 1px;
-    top: 19px;
-  }
-  54% {
-    width: 0;
-    left: 1px;
-    top: 19px;
-  }
-  70% {
-    width: 50px;
-    left: -8px;
-    top: 37px;
-  }
-  84% {
-    width: 17px;
-    left: 21px;
-    top: 48px;
-  }
-  100% {
-    width: 25px;
-    left: 14px;
-    top: 45px;
-  }
+  0% { width: 0; left: 1px; top: 19px; }
+  54% { width: 0; left: 1px; top: 19px; }
+  70% { width: 50px; left: -8px; top: 37px; }
+  84% { width: 17px; left: 21px; top: 48px; }
+  100% { width: 25px; left: 14px; top: 45px; }
 }
 
 @keyframes icon-line-long {
-  0% {
-    width: 0;
-    right: 46px;
-    top: 54px;
-  }
-  65% {
-    width: 0;
-    right: 46px;
-    top: 54px;
-  }
-  84% {
-    width: 55px;
-    right: 0px;
-    top: 35px;
-  }
-  100% {
-    width: 47px;
-    right: 8px;
-    top: 38px;
-  }
+  0% { width: 0; right: 46px; top: 54px; }
+  65% { width: 0; right: 46px; top: 54px; }
+  84% { width: 55px; right: 0px; top: 35px; }
+  100% { width: 47px; right: 8px; top: 38px; }
 }
 
 .order-details {
@@ -1802,38 +1523,42 @@ a:hover {
   border: 1px solid rgba(255, 215, 0, 0.15);
 }
 
-/* --- Custom Toast Animations --- */
+/* ===========================================
+   8. ANIMAÇÕES
+=========================================== */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeInLeft {
+  from { opacity: 0; transform: translateX(-30px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes fadeInRight {
+  from { opacity: 0; transform: translateX(30px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
 @keyframes slideInRight {
-  from {
-    transform: translateX(100%);
-    opacity: 0;
-  }
-  to {
-    transform: translateX(0);
-    opacity: 1;
-  }
+  from { transform: translateX(100%); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
 }
 
 @keyframes slideOutRight {
-  from {
-    transform: translateX(0);
-    opacity: 1;
-  }
-  to {
-    transform: translateX(100%);
-    opacity: 0;
-  }
+  from { transform: translateX(0); opacity: 1; }
+  to { transform: translateX(100%); opacity: 0; }
 }
 
-.cursor-pointer {
-  cursor: pointer;
-}
-
-/* --- Animações de Adicionar ao Carrinho --- */
-
-/* Animação do badge do carrinho */
+/* --- Animações de Carrinho --- */
 .cart-badge-pulse {
-  animation: badgePulse 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55) !important;
+  animation: badgePulse 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
 
 @keyframes badgePulse {
@@ -1843,9 +1568,8 @@ a:hover {
   100% { transform: scale(1); }
 }
 
-/* Animação de shake no botão do carrinho */
 .cart-btn-shake {
-  animation: cartShake 0.5s ease !important;
+  animation: cartShake 0.5s ease;
 }
 
 @keyframes cartShake {
@@ -1856,16 +1580,15 @@ a:hover {
   80% { transform: translateX(2px) rotate(2deg); }
 }
 
-/* Estado de sucesso do botão adicionar */
 .btn-added {
-  background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%) !important;
-  box-shadow: 0 4px 20px rgba(76, 175, 80, 0.4) !important;
+  background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%);
+  box-shadow: 0 4px 20px rgba(76, 175, 80, 0.4);
   pointer-events: none;
-  animation: btnSuccess 0.4s ease !important;
+  animation: btnSuccess 0.4s ease;
 }
 
 .btn-added:hover {
-  transform: none !important;
+  transform: none;
 }
 
 @keyframes btnSuccess {
@@ -1874,12 +1597,44 @@ a:hover {
   100% { transform: scale(1); }
 }
 
-/* Toast de sucesso melhorado */
+.btn-added .iccon-check-1 {
+  animation: checkBounce 0.5s ease;
+}
+
+@keyframes checkBounce {
+  0% { transform: scale(0) rotate(-45deg); opacity: 0; }
+  50% { transform: scale(1.3) rotate(10deg); }
+  100% { transform: scale(1) rotate(0); opacity: 1; }
+}
+
+.btn-buying {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-color: #667eea;
+  color: #fff;
+  box-shadow: 0 4px 20px rgba(102, 126, 234, 0.4);
+  pointer-events: none;
+}
+
+.btn-buying:hover {
+  transform: none;
+}
+
+.spin {
+  display: inline-block;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* --- Toast --- */
 .toastify {
-  animation: toastSlideIn 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55) !important;
-  font-family: 'Inter', sans-serif !important;
-  border-radius: 10px !important;
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(255, 255, 255, 0.1) !important;
+  animation: toastSlideIn 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  font-family: 'Inter', sans-serif;
+  border-radius: 10px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(255, 255, 255, 0.1);
 }
 
 .toast-success::before {
@@ -1903,7 +1658,6 @@ a:hover {
   font-weight: bold;
 }
 
-/* Toast customizado (fallback) */
 .custom-toast {
   font-family: 'Inter', sans-serif;
 }
@@ -1914,63 +1668,16 @@ a:hover {
 }
 
 @keyframes toastSlideIn {
-  0% {
-    transform: translateX(100%) scale(0.8);
-    opacity: 0;
-  }
-  100% {
-    transform: translateX(0) scale(1);
-    opacity: 1;
-  }
+  0% { transform: translateX(100%) scale(0.8); opacity: 0; }
+  100% { transform: translateX(0) scale(1); opacity: 1; }
 }
 
 @keyframes toastSlideOut {
-  0% {
-    transform: translateX(0) scale(1);
-    opacity: 1;
-  }
-  100% {
-    transform: translateX(100%) scale(0.8);
-    opacity: 0;
-  }
+  0% { transform: translateX(0) scale(1); opacity: 1; }
+  100% { transform: translateX(100%) scale(0.8); opacity: 0; }
 }
 
-/* Animação de ícone de check no botão */
-.btn-added .iccon-check-1 {
-  animation: checkBounce 0.5s ease !important;
-}
-
-@keyframes checkBounce {
-  0% { transform: scale(0) rotate(-45deg); opacity: 0; }
-  50% { transform: scale(1.3) rotate(10deg); }
-  100% { transform: scale(1) rotate(0); opacity: 1; }
-}
-
-/* Estado de "Comprando Agora" */
-.btn-buying {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
-  border-color: #667eea !important;
-  color: #fff !important;
-  box-shadow: 0 4px 20px rgba(102, 126, 234, 0.4) !important;
-  pointer-events: none;
-}
-
-.btn-buying:hover {
-  transform: none !important;
-}
-
-/* Spinner de loading */
-.spin {
-  display: inline-block;
-  animation: spin 1s linear infinite;
-}
-
-@keyframes spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
-
-/* Estilo do botão Comprar Agora */
+/* --- Buy Now Button --- */
 .buy-now-btn {
   position: relative;
   overflow: hidden;
@@ -2002,4 +1709,210 @@ a:hover {
 .buy-now-btn:hover .iccon-zap-1 {
   color: var(--color-dark);
   transform: scale(1.2);
+}
+
+/* --- Scroll to Top --- */
+.scroll-to-top {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background: var(--gradient-gold);
+  color: var(--color-dark);
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  box-shadow: var(--shadow-gold);
+  z-index: 999;
+  transition: var(--transition-smooth);
+}
+
+.scroll-to-top:hover {
+  transform: translateY(-5px) scale(1.1);
+  box-shadow: var(--shadow-gold-lg);
+}
+
+/* --- Cursor Helper --- */
+.cursor-pointer {
+  cursor: pointer;
+}
+
+/* ===========================================
+   9. RESPONSIVO
+=========================================== */
+
+/* Tablet (max 991px) */
+@media (max-width: 991px) {
+  .logo-img {
+    width: 110px;
+  }
+
+  .logo-footer {
+    width: 140px;
+  }
+
+  body .modal-dialog .dialog-content {
+    padding: 25px;
+  }
+
+  body .modal-dialog .dialog-inline.w-800px,
+  body .modal-dialog .dialog-inline.w-900px {
+    max-width: 90vw;
+  }
+
+  body .modal-dialog .dialog-inline.w-1000px {
+    max-width: 95vw;
+  }
+
+  body .modal-popup > .row {
+    flex-direction: column;
+  }
+
+  body .modal-popup > .row > div:first-child {
+    max-height: 250px;
+    overflow: hidden;
+    border-radius: 8px;
+  }
+
+  body .modal-popup > .row > div:first-child img {
+    width: 100%;
+    height: 250px;
+    max-height: 250px;
+  }
+}
+
+/* Mobile (max 639px) */
+@media (max-width: 639px) {
+  .logo-img {
+    width: 95px;
+  }
+
+  .logo-footer {
+    width: 120px;
+  }
+
+  .product-image img {
+    height: 250px;
+  }
+
+  .btn-cta {
+    padding: 16px 32px;
+    font-size: 18px;
+  }
+
+  body .modal-dialog .dialog-content {
+    padding: 15px;
+    align-items: flex-start;
+    padding-top: 30px;
+  }
+
+  body .modal-dialog .dialog-inline {
+    max-height: 90vh;
+    width: calc(100vw - 30px);
+    max-width: none;
+  }
+
+  body .modal-dialog .dialog-inline.w-800px,
+  body .modal-dialog .dialog-inline.w-900px,
+  body .modal-dialog .dialog-inline.w-1000px,
+  body .modal-dialog .dialog-inline.w-600px {
+    width: calc(100vw - 30px);
+    max-width: none;
+  }
+
+  body .modal-dialog .dialog-close {
+    top: -8px;
+    right: 5px;
+    width: 32px;
+    height: 32px;
+    font-size: 14px;
+  }
+
+  body .modal-dialog .modal-popup {
+    max-height: 85vh;
+    padding: 20px;
+  }
+
+  body .modal-popup h2 {
+    font-size: 18px;
+  }
+
+  body .modal-popup > .row > div:first-child {
+    max-height: 180px;
+  }
+
+  body .modal-popup > .row > div:first-child img {
+    height: 180px;
+    max-height: 180px;
+  }
+
+  body .modal-popup .product-price .price-current {
+    font-size: 20px;
+  }
+
+  body .modal-popup .btn-primary,
+  body .modal-popup .btn-secondary {
+    padding: 10px 16px;
+    font-size: 13px;
+  }
+
+  .cart-item {
+    padding: 12px;
+  }
+
+  .cart-item-image-wrapper {
+    width: 70px;
+    height: 70px;
+  }
+
+  .cart-item-info {
+    padding: 0 10px;
+  }
+
+  .cart-item-info h4 {
+    font-size: 14px;
+  }
+
+  .cart-item-controls {
+    width: 100%;
+    justify-content: space-between;
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 1px solid rgba(255, 215, 0, 0.1);
+  }
+
+  .cart-item-total {
+    text-align: right;
+    min-width: auto;
+  }
+
+  .cart-footer {
+    padding: 15px;
+  }
+
+  .cart-actions {
+    flex-direction: column;
+    gap: 10px;
+  }
+}
+
+/* Mobile pequeno (max 480px) */
+@media (max-width: 480px) {
+  .cart-items-container {
+    max-height: 300px;
+  }
+
+  .cart-qty-btn {
+    width: 32px;
+    height: 32px;
+  }
+
+  .cart-qty-input {
+    width: 40px;
+    height: 32px;
+  }
 }
